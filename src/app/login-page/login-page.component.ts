@@ -58,5 +58,15 @@ export class LoginPageComponent implements OnInit {
     this.dialog.open(ref);
   }
 
-  changepassword(oldpassword: string, newpassword: string) {}
+  changepassword(oldpassword: string, newpassword: string) {
+    let id_cust_login = BigInt(localStorage.getItem('store_owner_ad_contacts'));
+    this.xsystbackend
+      .changepassword(id_cust_login, oldpassword, newpassword)
+      .subscribe((jsonObj) => {
+        if (jsonObj.status === '00') {
+          this.menuBarService.setIsAuthenticated(true);
+          this.router.navigateByUrl('/dashboard');
+        }
+      });
+  }
 }

@@ -36,4 +36,18 @@ export class XsystbackendService {
     };
     return this.http.post<loginresp>(url, body);
   }
+
+  changepassword(
+    id_cust_login: bigint,
+    oldpassword: string,
+    newpassword: string
+  ) {
+    const url = this.mainURL + 'api/customer/login/changepassword';
+    const body = {
+      id_customer_login_user: id_cust_login,
+      old_password: oldpassword,
+      new_password: newpassword,
+    };
+    return this.http.post<loginresp>(url, body);
+  }
 }
