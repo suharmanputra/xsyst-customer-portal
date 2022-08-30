@@ -1,0 +1,36 @@
+<form>
+  <div class="pagecontainer">
+    <mat-card>
+      <div style="text-align:center;">Xsyst Portal</div>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>User ID</mat-label>
+        <input matInput #usernameInput placeholder="Masukan User Id Anda" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput #passwordInput [type]="hide ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div style="text-align:center;">
+        <button
+          style="display:inline-block;"
+          mat-raised-button
+          (click)="checkLogin(usernameInput.value, passwordInput.value)"
+        >
+          Login
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</form>
