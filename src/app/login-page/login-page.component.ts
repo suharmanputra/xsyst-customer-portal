@@ -24,11 +24,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   checkLogin(username: string, password: string) {
-    console.log('test');
     this.menuBarService.setLoadingAnimation(true);
-    this.xsystbackend.getLogin(username, password).subscribe((resplogin) => {
-      var jsonObj = JSON.parse(resplogin);
-
+    this.xsystbackend.getLogin(username, password).subscribe((jsonObj) => {
       if (jsonObj.status === '00') {
         this.menuBarService.setIsAuthenticated(true);
         this.router.navigateByUrl('/dashboard');
@@ -38,8 +35,8 @@ export class LoginPageComponent implements OnInit {
         this.snackBar.open(jsonObj.message, 'Ok', {
           duration: 3000,
         });
-        this.menuBarService.setLoadingAnimation(false);
       }
+      this.menuBarService.setLoadingAnimation(false);
     });
   }
 }

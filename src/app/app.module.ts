@@ -50,6 +50,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { XsystbackendService } from './shared/xsystbackend.service';
+import { TopBarComponent } from './top-bar/top-bar.component';
 import { MenuBarService } from './shared/menu-bar.service';
 import { LoginPageComponent } from './login-page/login-page.component';
 
@@ -105,7 +106,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MatTooltipModule,
     MatTreeModule,
   ],
-  declarations: [AppComponent, LoginPageComponent],
+  declarations: [AppComponent, LoginPageComponent, TopBarComponent],
   bootstrap: [AppComponent],
   providers: [XsystbackendService, MenuBarService],
 })
