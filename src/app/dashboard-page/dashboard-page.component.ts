@@ -8,6 +8,7 @@ import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
   styleUrls: ['./dashboard-page.component.css'],
 })
 export class DashboardPageComponent implements OnInit {
+  username: string;
   constructor(private menuBarService: MenuBarService, private router: Router) {}
 
   ngOnInit() {
