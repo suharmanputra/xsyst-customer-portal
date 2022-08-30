@@ -81,7 +81,7 @@ export class LoginPageComponent implements OnInit {
             } else {
               this.snackBar.open(jsonObj.message, 'Ok', {
                 duration: 3000,
-              });
+              }); 
             }
           });
       }
