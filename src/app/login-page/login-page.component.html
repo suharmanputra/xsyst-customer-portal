@@ -33,4 +33,36 @@
       </div>
     </mat-card>
   </div>
+
+  <ng-template #changepassworddialog>
+    <h2 matDialogTitle>Ubah Password</h2>
+    <div matDialogContent>
+      <input
+        #oldpassword
+        matInput
+        placeholder="Password Lama"
+        #tarikdanainput
+        autocomplete="disable"
+        required
+      />
+      <input
+        #newpassword
+        matInput
+        placeholder="Password Baru"
+        #tarikdanainput
+        autocomplete="disable"
+        required
+      />
+      <button
+        mat-button
+        mat-raised-button
+        matDialogClose
+        color="accent"
+        style="display:inline-block"
+        (click)="changepassword(oldpassword.value, newpassword.value)"
+      >
+        Ubah Password
+      </button>
+    </div>
+  </ng-template>
 </form>

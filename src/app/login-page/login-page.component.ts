@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 import { MenuBarService } from '../shared/menu-bar.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { XsystbackendService } from '../shared/xsystbackend.service';
+import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
+import { ViewChild, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-login-page',
@@ -10,13 +12,15 @@ import { XsystbackendService } from '../shared/xsystbackend.service';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
+  @ViewChild('changepassworddialog') changepassworddialog: TemplateRef<any>;
   hide = true;
   constructor(
     private actRouter: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
     private menuBarService: MenuBarService,
-    private xsystbackend: XsystbackendService
+    private xsystbackend: XsystbackendService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -27,16 +31,32 @@ export class LoginPageComponent implements OnInit {
     this.menuBarService.setLoadingAnimation(true);
     this.xsystbackend.getLogin(username, password).subscribe((jsonObj) => {
       if (jsonObj.status === '00') {
-        this.menuBarService.setIsAuthenticated(true);
-        this.router.navigateByUrl('/dashboard');
-        localStorage.setItem('userid', btoa(jsonObj.data.login_info.username));
-        localStorage.setItem('username', btoa(username.toLowerCase()));
+        if (jsonObj.data.default_password) {
+          this.snackBar.open('Please Change Password for the first time', '', {
+            duration: 3000,
+          });
+          this.menuBarService.setLoadingAnimation(false);
+          this.openDialogWithRef(this.changepassworddialog);
+        } else {
+          this.menuBarService.setIsAuthenticated(true);
+          this.router.navigateByUrl('/dashboard');
+          localStorage.setItem(
+            'userid',
+            btoa(jsonObj.data.login_info.username)
+          );
+          localStorage.setItem('username', btoa(username.toLowerCase()));
+        }
       } else {
         this.snackBar.open(jsonObj.message, 'Ok', {
           duration: 3000,
         });
       }
-      this.menuBarService.setLoadingAnimation(false);
     });
   }
+
+  openDialogWithRef(ref: TemplateRef<any>) {
+    this.dialog.open(ref);
+  }
+
+  changepassword(oldpassword: string, newpassword: string) {}
 }

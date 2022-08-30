@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent } from '@angular/common/http';
+import { loginresp } from '../interface/loginresp';
 
 @Injectable()
 export class XsystbackendService {
@@ -35,30 +36,4 @@ export class XsystbackendService {
     };
     return this.http.post<loginresp>(url, body);
   }
-}
-
-interface LoginInfo {
-  id_customer_login_user: number;
-  id_customer: number;
-  active: boolean;
-  username: string;
-  fullname: string;
-  email: string;
-  phone: string;
-  created_by: string;
-  created_date: Date;
-  last_updated_by: string;
-  last_updated_date: Date;
-}
-
-interface Data {
-  default_password: boolean;
-  login_info: LoginInfo;
-  token: string;
-}
-
-interface loginresp {
-  status: string;
-  message: string;
-  data: Data;
 }
