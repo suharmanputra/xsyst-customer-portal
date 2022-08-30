@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { loginresp } from '../interface/loginresp';
+import { ChangepasswordResp } from '../interface/changepassword';
 
 @Injectable()
 export class XsystbackendService {
@@ -38,7 +39,7 @@ export class XsystbackendService {
   }
 
   changepassword(
-    id_cust_login: bigint,
+    id_cust_login: number,
     oldpassword: string,
     newpassword: string
   ) {
@@ -48,6 +49,6 @@ export class XsystbackendService {
       old_password: oldpassword,
       new_password: newpassword,
     };
-    return this.http.post<loginresp>(url, body);
+    return this.http.put<ChangepasswordResp>(url, body);
   }
 }

@@ -7,12 +7,13 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "importHelpers": true,
-    "target": "ES2022",
+    "target": "ES2015",
     "typeRoots": ["node_modules/@types"],
-    "lib": ["ES2022", "dom"]
+    "removeComments": true,
+    "lib": ["ES2018", "DOM"]
   },
   "angularCompilerOptions": {
     "enableIvy": true,

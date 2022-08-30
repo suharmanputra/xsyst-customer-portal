@@ -40,18 +40,19 @@ export class LoginPageComponent implements OnInit {
         } else {
           this.menuBarService.setIsAuthenticated(true);
           this.router.navigateByUrl('/dashboard');
-          localStorage.setItem(
-            'userid',
-            btoa(jsonObj.data.login_info.username)
-          );
-          localStorage.setItem('username', btoa(username.toLowerCase()));
         }
+        localStorage.setItem(
+          'userid',
+          String(jsonObj.data.login_info.id_customer_login_user)
+        );
+        localStorage.setItem('username', jsonObj.data.login_info.username);
       } else {
         this.snackBar.open(jsonObj.message, 'Ok', {
           duration: 3000,
         });
       }
     });
+    this.menuBarService.setLoadingAnimation(false);
   }
 
   openDialogWithRef(ref: TemplateRef<any>) {
@@ -59,14 +60,32 @@ export class LoginPageComponent implements OnInit {
   }
 
   changepassword(oldpassword: string, newpassword: string) {
-    let id_cust_login = BigInt(localStorage.getItem('store_owner_ad_contacts'));
-    this.xsystbackend
-      .changepassword(id_cust_login, oldpassword, newpassword)
-      .subscribe((jsonObj) => {
-        if (jsonObj.status === '00') {
-          this.menuBarService.setIsAuthenticated(true);
-          this.router.navigateByUrl('/dashboard');
-        }
+    if (oldpassword === '') {
+      this.snackBar.open('Old password cant be empty', 'Ok', {
+        duration: 3000,
       });
+    } else {
+      if (newpassword === '') {
+        this.snackBar.open('New password cant be empty', 'Ok', {
+          duration: 3000,
+        });
+      } else {
+        this.menuBarService.setLoadingAnimation(true);
+        let id_cust_login = Number(localStorage.getItem('userid'));
+        this.xsystbackend
+          .changepassword(id_cust_login, oldpassword, newpassword)
+          .subscribe((jsonObj) => {
+            if (jsonObj.status === '00') {
+              this.menuBarService.setIsAuthenticated(true);
+              this.router.navigateByUrl('/dashboard');
+            } else {
+              this.snackBar.open(jsonObj.message, 'Ok', {
+                duration: 3000,
+              });
+            }
+          });
+      }
+    }
+    this.menuBarService.setLoadingAnimation(false);
   }
 }
