@@ -1,68 +1,84 @@
 <form>
   <div class="pagecontainer">
     <mat-card>
-      <div style="text-align:center;">Xsyst Portal</div>
+      <div class="screen-1">
+        <div style="text-align:center;"><h2>Xsyst Portal</h2></div>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>User ID</mat-label>
-        <input matInput #usernameInput placeholder="Masukan User Id Anda" />
-      </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>User ID</mat-label>
+          <input matInput #usernameInput placeholder="Masukan User ID Anda" />
+        </mat-form-field>
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput #passwordInput [type]="hide ? 'password' : 'text'" />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
-        >
-          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-        </button>
-      </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput #passwordInput [type]="hide ? 'password' : 'text'" />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </mat-form-field>
 
-      <div style="text-align:center;">
-        <button
-          style="display:inline-block;"
-          mat-raised-button
-          (click)="checkLogin(usernameInput.value, passwordInput.value)"
-        >
-          Login
-        </button>
+        <div style="text-align:center;">
+          <button
+            class="login"
+            style="display:inline-block;"
+            mat-raised-button
+            (click)="checkLogin(usernameInput.value, passwordInput.value)"
+          >
+            Login
+          </button>
+        </div>
       </div>
     </mat-card>
-  </div>
 
-  <ng-template #changepassworddialog>
-    <h2 matDialogTitle>Ubah Password</h2>
-    <div matDialogContent>
-      <input
-        #oldpassword
-        matInput
-        placeholder="Password Lama"
-        #tarikdanainput
-        autocomplete="disable"
-        required
-      />
-      <input
-        #newpassword
-        matInput
-        placeholder="Password Baru"
-        #tarikdanainput
-        autocomplete="disable"
-        required
-      />
-      <button
-        mat-button
-        mat-raised-button
-        matDialogClose
-        color="accent"
-        style="display:inline-block"
-        (click)="changepassword(oldpassword.value, newpassword.value)"
-      >
-        Ubah Password
-      </button>
-    </div>
-  </ng-template>
+    <ng-template #changepassworddialog>
+      <div>
+        <div style="text-align:center;">
+          <h4 matDialogTitle>Change Password</h4>
+        </div>
+        <div class="screen-1" matDialogContent>
+          <br /><br /><br />
+          <div class="email">
+            <input
+              #oldpassword
+              matInput
+              placeholder="Old Password"
+              #tarikdanainput
+              autocomplete="disable"
+              required
+            />
+          </div>
+          <br /><br /><br />
+          <div class="email">
+            <input
+              #newpassword
+              matInput
+              placeholder="New Password"
+              #tarikdanainput
+              autocomplete="disable"
+              required
+            />
+          </div>
+          <br />
+          <button
+            class="changepass"
+            mat-button
+            mat-raised-button
+            matDialogClose
+            color="accent"
+            style="display:inline-block"
+            (click)="changepassword(oldpassword.value, newpassword.value)"
+          >
+            Change Password
+          </button>
+          <br /><br />
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </form>
