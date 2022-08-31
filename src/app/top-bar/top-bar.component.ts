@@ -30,26 +30,11 @@ export class TopBarComponent implements OnInit {
       this.menuAdminPanel = result;
     });
   }
+
   redirect_home() {
     this.router.navigateByUrl('/dashboard');
   }
-  redirect_profil() {
-    this.router.navigateByUrl('/profil');
-  }
 
-  redirect_transaksi() {
-    this.router.navigateByUrl('/transaksi');
-  }
-
-  redirect_member() {
-    this.router.navigateByUrl('/member');
-  }
-  redirect_admin() {
-    this.router.navigateByUrl('/admin');
-  }
-  redirect_about() {
-    this.router.navigateByUrl('/about');
-  }
   logout() {
     this.menuBarService.setMenuVisible(false);
     localStorage.setItem('userid', '');
