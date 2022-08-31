@@ -35,8 +35,20 @@ export class LoginPageComponent implements OnInit {
           this.snackBar.open('Please Change Password for the first time', '', {
             duration: 3000,
           });
+
           this.menuBarService.setLoadingAnimation(false);
           this.openDialogWithRef(this.changepassworddialog);
+
+          let txtpassword = document.getElementById(
+            'passwordInput'
+          ) as HTMLInputElement;
+          let txtoldpassword = document.getElementById(
+            'oldpassword'
+          ) as HTMLInputElement;
+          let txtnewpassword = document.getElementById(
+            'newpassword'
+          ) as HTMLInputElement;
+          txtoldpassword.value = txtpassword.value;
         } else {
           this.menuBarService.setIsAuthenticated(true);
           this.router.navigateByUrl('/dashboard');
@@ -81,7 +93,7 @@ export class LoginPageComponent implements OnInit {
             } else {
               this.snackBar.open(jsonObj.message, 'Ok', {
                 duration: 3000,
-              }); 
+              });
             }
           });
       }
