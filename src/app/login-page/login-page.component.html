@@ -44,25 +44,47 @@
         <div class="screen-1" matDialogContent>
           <br /><br /><br />
           <div class="email">
-            <input
-              #oldpassword
-              matInput
-              placeholder="Old Password"
-              #tarikdanainput
-              autocomplete="disable"
-              required
-            />
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                #oldpassword
+                [type]="hide ? 'password' : 'text'"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? 'visibility_off' : 'visibility'
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
           </div>
           <br /><br /><br />
           <div class="email">
-            <input
-              #newpassword
-              matInput
-              placeholder="New Password"
-              #tarikdanainput
-              autocomplete="disable"
-              required
-            />
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                #newpassword
+                [type]="hide ? 'password' : 'text'"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? 'visibility_off' : 'visibility'
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
           </div>
           <br />
           <button
