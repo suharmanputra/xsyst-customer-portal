@@ -1,12 +1,14 @@
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-@font-face {
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+/* @font-face {
   font-family: 'Nunito';
   src: url('assets/fonts/Nunito-Black.ttf') format('truetype');
-}
+} */
 
 * {
-  font-family: Nunito;
+  font-family: Oswald;
 }
 
 .pagecontainer {

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { FontService } from './font.service';
 
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -108,6 +109,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
   ],
   declarations: [AppComponent, LoginPageComponent, TopBarComponent],
   bootstrap: [AppComponent],
-  providers: [XsystbackendService, MenuBarService],
+  providers: [XsystbackendService, MenuBarService, FontService],
 })
 export class AppModule {}
