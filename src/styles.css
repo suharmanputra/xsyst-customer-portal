@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Nunito';
-  src: url('/fonts/Nunito-Black.ttf') format('truetype');
+  src: url('assets/fonts/Nunito-Black.ttf') format('truetype');
 }
 
 * {
