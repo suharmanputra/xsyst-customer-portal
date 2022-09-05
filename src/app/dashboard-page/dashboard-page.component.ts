@@ -14,6 +14,9 @@ import { ViewChild, TemplateRef } from '@angular/core';
 export class DashboardPageComponent implements OnInit {
   @ViewChild('settingdialog') settingdialog: TemplateRef<any>;
   username: string;
+  fullname: string;
+  email: string;
+  phone: string;
   constructor(
     private actRouter: ActivatedRoute,
     private router: Router,
@@ -39,28 +42,12 @@ export class DashboardPageComponent implements OnInit {
       .getcustomerlogindatabyidcustomerlogin()
       .subscribe((jsonObj) => {
         if (jsonObj.status === '00') {
-          // let txtusername = document.getElementById(
-          //   'txtusername'
-          // ) as HTMLInputElement;
-
-          // let txtfullname = document.getElementById(
-          //   'txtfullname'
-          // ) as HTMLInputElement;
-
-          // let txtemail = document.getElementById(
-          //   'txtemail'
-          // ) as HTMLInputElement;
-
-          // let txtphone = document.getElementById(
-          //   'txtphone'
-          // ) as HTMLInputElement;
-
           console.log(jsonObj.data.customer_login_list[0].username);
           console.log(this.username);
-          // txtusername.value = jsonObj.data.customer_login_list[0].username;
-          // txtfullname.value = jsonObj.data.customer_login_list[0].fullname;
-          // txtemail.value = jsonObj.data.customer_login_list[0].email;
-          // txtphone.value = jsonObj.data.customer_login_list[0].phone;
+
+          this.fullname = jsonObj.data.customer_login_list[0].fullname;
+          this.email = jsonObj.data.customer_login_list[0].email;
+          this.phone = jsonObj.data.customer_login_list[0].phone;
 
           this.openDialogWithRef(this.settingdialog);
         } else {

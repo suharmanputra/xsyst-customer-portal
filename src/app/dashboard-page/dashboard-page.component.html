@@ -20,7 +20,7 @@
             <mat-label>User Name</mat-label>
             <input
               matInput
-              [attr.disabled]="true"
+              readonly="isReadOnly"
               #txtusername
               id="txtusername"
               value="{{ username }}"
@@ -31,17 +31,17 @@
             <input
               matInput
               #txtfullname
-              [attr.disabled]="true"
               id="txtfullnamename"
+              value="{{ fullname }}"
             />
           </mat-form-field>
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>E-Mail</mat-label>
-            <input matInput #txtemail [attr.disabled]="true" id="txtemail" />
+            <input matInput #txtemail id="txtemail" value="{{ email }}" />
           </mat-form-field>
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Phone</mat-label>
-            <input matInput #txtphone [attr.disabled]="true" id="txtphone" />
+            <input matInput #txtphone id="txtphone" value="{{ phone }}" />
           </mat-form-field>
           <button mat-raised-button>Update</button>
           <br />
