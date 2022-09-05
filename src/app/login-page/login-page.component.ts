@@ -58,6 +58,10 @@ export class LoginPageComponent implements OnInit {
             'newpassword'
           ) as HTMLInputElement;
           txtoldpassword.value = txtpassword.value;
+
+          setTimeout(() => {
+            txtnewpassword.focus();
+          }, 300);
         } else {
           //navigate ke dashboard
           this.menuBarService.setIsAuthenticated(true);

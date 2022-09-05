@@ -42,14 +42,17 @@ export class DashboardPageComponent implements OnInit {
       .getcustomerlogindatabyidcustomerlogin()
       .subscribe((jsonObj) => {
         if (jsonObj.status === '00') {
-          console.log(jsonObj.data.customer_login_list[0].username);
-          console.log(this.username);
-
           this.fullname = jsonObj.data.customer_login_list[0].fullname;
           this.email = jsonObj.data.customer_login_list[0].email;
           this.phone = jsonObj.data.customer_login_list[0].phone;
 
           this.openDialogWithRef(this.settingdialog);
+
+                    setTimeout(() => {
+            (
+              document.getElementById('txtfullname') as HTMLInputElement
+            ).focus();
+          }, 300);
         } else {
           this.snackBar.open(jsonObj.message, 'Ok', {
             duration: 3000,
