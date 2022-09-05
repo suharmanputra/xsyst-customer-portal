@@ -8,6 +8,7 @@ import { CustomerLoginDataResp } from '../interface/customerlogindata';
 export class XsystbackendService {
   constructor(private http: HttpClient) {}
   mainURL = 'https://apidev.galva.co.id/xsyst/';
+  // mainURL = 'https://localhost:44359/';
 
   formatDate(date: string) {
     var d = new Date(date),
@@ -62,6 +63,25 @@ export class XsystbackendService {
     );
     this.http.head;
     return this.http.get<CustomerLoginDataResp>(url, {
+      headers,
+    });
+  }
+
+  updateprofil(fullname: string, email: string, phone: string) {
+    const url = this.mainURL + 'api/customer/login/updateinfo';
+    const body = {
+      id_customer_login_user: localStorage.getItem('userid'),
+      fullname: fullname,
+      email: email,
+      phone: phone,
+    };
+    let headers = new HttpHeaders();
+    headers = headers.set(
+      'Authorization',
+      'Bearer ' + localStorage.getItem('token')
+    );
+    this.http.head;
+    return this.http.put<ChangepasswordResp>(url, body, {
       headers,
     });
   }

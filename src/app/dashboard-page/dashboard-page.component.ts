@@ -45,10 +45,9 @@ export class DashboardPageComponent implements OnInit {
           this.fullname = jsonObj.data.customer_login_list[0].fullname;
           this.email = jsonObj.data.customer_login_list[0].email;
           this.phone = jsonObj.data.customer_login_list[0].phone;
-
           this.openDialogWithRef(this.settingdialog);
 
-                    setTimeout(() => {
+          setTimeout(() => {
             (
               document.getElementById('txtfullname') as HTMLInputElement
             ).focus();
@@ -61,7 +60,25 @@ export class DashboardPageComponent implements OnInit {
       });
   }
 
+  updateProfil(fullname: string, email: string, phone: string) {
+    this.xsystbackend
+      .updateprofil(fullname, email, phone)
+      .subscribe((jsonObj) => {
+        if (jsonObj.status === '00') {
+          this.closeDialog();
+        } else {
+        }
+        this.snackBar.open(jsonObj.message, 'Ok', {
+          duration: 3000,
+        });
+      });
+  }
+
   openDialogWithRef(ref: TemplateRef<any>) {
     this.dialog.open(ref);
+  }
+
+  closeDialog() {
+    this.dialog.closeAll();
   }
 }

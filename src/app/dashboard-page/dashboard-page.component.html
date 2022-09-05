@@ -43,7 +43,14 @@
             <mat-label>Phone</mat-label>
             <input matInput #txtphone id="txtphone" value="{{ phone }}" />
           </mat-form-field>
-          <button mat-raised-button>Update</button>
+          <button
+            mat-raised-button
+            (click)="
+              updateProfil(txtfullname.value, txtemail.value, txtphone.value)
+            "
+          >
+            Update
+          </button>
           <br />
         </div>
       </div>

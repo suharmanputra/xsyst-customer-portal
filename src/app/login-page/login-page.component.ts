@@ -45,7 +45,6 @@ export class LoginPageComponent implements OnInit {
             duration: 3000,
           });
 
-          this.menuBarService.setLoadingAnimation(false);
           this.openDialogWithRef(this.changepassworddialog);
 
           let txtpassword = document.getElementById(
