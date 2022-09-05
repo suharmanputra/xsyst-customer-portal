@@ -12,6 +12,7 @@ export class DashboardPageComponent implements OnInit {
   constructor(private menuBarService: MenuBarService, private router: Router) {}
 
   ngOnInit() {
+    this.username = localStorage.getItem('username');
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.globalIsAuthenticated.subscribe((result) => {
       if (result === false) {

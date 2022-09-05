@@ -24,14 +24,20 @@ export class LoginPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.menuBarService.setIsAuthenticated(true);
     this.menuBarService.setMenuVisible(false);
+    this.router.navigateByUrl('/dashboard');
   }
 
   checkLogin(username: string, password: string) {
     this.menuBarService.setLoadingAnimation(true);
     this.xsystbackend.getLogin(username, password).subscribe((jsonObj) => {
       if (jsonObj.status === '00') {
+        // harus reset password jika password masih menggunakan default
+
         if (jsonObj.data.default_password) {
+          // dialog password reset on login
+
           this.snackBar.open('Please Change Password for the first time', '', {
             duration: 3000,
           });
@@ -50,9 +56,11 @@ export class LoginPageComponent implements OnInit {
           ) as HTMLInputElement;
           txtoldpassword.value = txtpassword.value;
         } else {
+          //navigate ke dashboard
           this.menuBarService.setIsAuthenticated(true);
           this.router.navigateByUrl('/dashboard');
         }
+
         localStorage.setItem(
           'userid',
           String(jsonObj.data.login_info.id_customer_login_user)
