@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuBarService } from '../shared/menu-bar.service';
 import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ViewChild, TemplateRef } from '@angular/core';
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
@@ -9,7 +10,11 @@ import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 })
 export class DashboardPageComponent implements OnInit {
   username: string;
-  constructor(private menuBarService: MenuBarService, private router: Router) {}
+  constructor(
+    private menuBarService: MenuBarService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.username = localStorage.getItem('username');

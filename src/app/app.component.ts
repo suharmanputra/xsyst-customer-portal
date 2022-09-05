@@ -12,12 +12,5 @@ export class AppComponent {
   idx = 0;
   pairs = [{ header: 'Oswald', body: 'EB Garamond' }];
 
-  constructor(private fontService: FontService) {
-    this.setPair();
-  }
-
-  setPair() {
-    this.selected = this.pairs[this.idx];
-    this.fontService.loadFont(this.selected);
-  }
+  constructor(private fontService: FontService) {}
 }
