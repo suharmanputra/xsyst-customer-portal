@@ -80,7 +80,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #dde5f4;
+  /*background: #dde5f4;*/
   height: 100vh;
 }
 
