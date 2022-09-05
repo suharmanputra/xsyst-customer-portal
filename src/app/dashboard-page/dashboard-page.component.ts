@@ -39,9 +39,9 @@ export class DashboardPageComponent implements OnInit {
       .getcustomerlogindatabyidcustomerlogin()
       .subscribe((jsonObj) => {
         if (jsonObj.status === '00') {
-          let txtusername = document.getElementById(
-            'txtusername'
-          ) as HTMLInputElement;
+          // let txtusername = document.getElementById(
+          //   'txtusername'
+          // ) as HTMLInputElement;
 
           // let txtfullname = document.getElementById(
           //   'txtfullname'
@@ -56,7 +56,7 @@ export class DashboardPageComponent implements OnInit {
           // ) as HTMLInputElement;
 
           console.log(jsonObj.data.customer_login_list[0].username);
-          console.log(txtusername);
+          console.log(this.username);
           // txtusername.value = jsonObj.data.customer_login_list[0].username;
           // txtfullname.value = jsonObj.data.customer_login_list[0].fullname;
           // txtemail.value = jsonObj.data.customer_login_list[0].email;

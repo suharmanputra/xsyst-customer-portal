@@ -20,9 +20,10 @@
             <mat-label>User Name</mat-label>
             <input
               matInput
-              #txtusername
               [attr.disabled]="true"
+              #txtusername
               id="txtusername"
+              value="{{ username }}"
             />
           </mat-form-field>
           <mat-form-field appearance="outline" class="full-width">
