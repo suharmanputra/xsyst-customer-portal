@@ -8,6 +8,7 @@ import { MenuBarService } from '../shared/menu-bar.service';
   styleUrls: ['./top-bar.component.css'],
 })
 export class TopBarComponent implements OnInit {
+  matMenu: string;
   btnmenu: string;
   showProgressBar: boolean;
   menuAdminPanel: boolean;

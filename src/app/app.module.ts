@@ -54,6 +54,7 @@ import { XsystbackendService } from './shared/xsystbackend.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { MenuBarService } from './shared/menu-bar.service';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 
 @NgModule({
   imports: [
@@ -107,7 +108,12 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MatTooltipModule,
     MatTreeModule,
   ],
-  declarations: [AppComponent, LoginPageComponent, TopBarComponent],
+  declarations: [
+    AppComponent,
+    LoginPageComponent,
+    TopBarComponent,
+    DashboardPageComponent,
+  ],
   bootstrap: [AppComponent],
   providers: [XsystbackendService, MenuBarService, FontService],
 })

@@ -24,9 +24,12 @@ export class LoginPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menuBarService.setIsAuthenticated(true);
+    localStorage.setItem('userid', '');
+    localStorage.setItem('username', '');
+    localStorage.setItem('token', '');
     this.menuBarService.setMenuVisible(false);
-    this.router.navigateByUrl('/dashboard');
+    // this.menuBarService.setIsAuthenticated(true);
+    // this.router.navigateByUrl('/dashboard');
   }
 
   checkLogin(username: string, password: string) {
@@ -66,6 +69,7 @@ export class LoginPageComponent implements OnInit {
           String(jsonObj.data.login_info.id_customer_login_user)
         );
         localStorage.setItem('username', jsonObj.data.login_info.username);
+        localStorage.setItem('token', jsonObj.data.token);
       } else {
         this.snackBar.open(jsonObj.message, 'Ok', {
           duration: 3000,

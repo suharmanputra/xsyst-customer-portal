@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { loginresp } from '../interface/loginresp';
 import { ChangepasswordResp } from '../interface/changepassword';
+import { CustomerLoginDataResp } from '../interface/customerlogindata';
 
 @Injectable()
 export class XsystbackendService {
@@ -50,5 +51,18 @@ export class XsystbackendService {
       new_password: newpassword,
     };
     return this.http.put<ChangepasswordResp>(url, body);
+  }
+
+  getcustomerlogindatabyidcustomerlogin() {
+    const url = this.mainURL + 'api/customer/login/id';
+    let headers = new HttpHeaders();
+    headers = headers.set(
+      'Authorization',
+      'Bearer ' + localStorage.getItem('token')
+    );
+    this.http.head;
+    return this.http.get<CustomerLoginDataResp>(url, {
+      headers,
+    });
   }
 }

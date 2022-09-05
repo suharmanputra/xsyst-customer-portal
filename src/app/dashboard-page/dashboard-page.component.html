@@ -1,3 +1,51 @@
 <form>
-  <div class="pagecontainer">Selamat datang {{ username }}</div>
+  <div class="pagecontainer">
+    Selamat datang {{ username }}
+    <br />
+    <button mat-button color="primary" (click)="openSetting()">
+      <mat-icon>settings</mat-icon>
+      <br />
+      <span>Setting</span>
+    </button>
+  </div>
+
+  <ng-template #settingdialog>
+    <div>
+      <div style="text-align:center;">
+        <h4 matDialogTitle>Setting</h4>
+      </div>
+      <div class="screen-1" matDialogContent>
+        <div>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>User Name</mat-label>
+            <input
+              matInput
+              #txtusername
+              [attr.disabled]="true"
+              id="txtusername"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Full Name</mat-label>
+            <input
+              matInput
+              #txtfullname
+              [attr.disabled]="true"
+              id="txtfullnamename"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>E-Mail</mat-label>
+            <input matInput #txtemail [attr.disabled]="true" id="txtemail" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Phone</mat-label>
+            <input matInput #txtphone [attr.disabled]="true" id="txtphone" />
+          </mat-form-field>
+          <button mat-raised-button>Update</button>
+          <br />
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </form>
