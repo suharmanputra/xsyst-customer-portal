@@ -1,0 +1,23 @@
+<form>
+  <mat-card>Contract List</mat-card>
+  <mat-divider></mat-divider>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row">
+        <td>{{ row.id_contract }}</td>
+        <td>{{ row.username }}</td>
+        <td>{{ row.fullname }}</td>
+        <td>{{ row.email }}</td>
+        <td>{{ row.phone }}</td>
+      </tr>
+    </tbody>
+  </table>
+</form>

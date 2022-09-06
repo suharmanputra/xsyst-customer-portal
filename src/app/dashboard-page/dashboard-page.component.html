@@ -3,13 +3,21 @@
     Selamat datang {{ username }}
     <br />
 
-    <button mat-button color="primary">
+    <button
+      mat-button
+      color="primary"
+      (click)="menuBarService.navigatepage('dashboard')"
+    >
       <mat-icon>home</mat-icon>
       <br />
       <span>Home</span>
     </button>
 
-    <button mat-button color="primary">
+    <button
+      mat-button
+      color="primary"
+      (click)="menuBarService.navigatepage('contract')"
+    >
       <mat-icon>handshake</mat-icon>
       <br />
       <span>Contract</span>

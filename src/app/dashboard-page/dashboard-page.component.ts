@@ -21,8 +21,8 @@ export class DashboardPageComponent implements OnInit {
     private actRouter: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
-    private menuBarService: MenuBarService,
-    private xsystbackend: XsystbackendService,
+    public menuBarService: MenuBarService,
+    public xsystbackend: XsystbackendService,
     public dialog: MatDialog
   ) {}
 

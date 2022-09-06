@@ -4,6 +4,7 @@ import { loginresp } from '../interface/loginresp';
 import { ChangepasswordResp } from '../interface/changepassword';
 import { CustomerLoginDataResp } from '../interface/customerlogindata';
 import { tokencheckresp } from '../interface/tokencheckresp';
+import { contractlistresp } from '../interface/contractlistresp';
 
 @Injectable()
 export class XsystbackendService {
@@ -93,5 +94,18 @@ export class XsystbackendService {
       jwt: localStorage.getItem('token'),
     };
     return this.http.post<tokencheckresp>(url, body);
+  }
+
+  getallcontract() {
+    const url = this.mainURL + 'api/customer/login/getallcontract';
+    let headers = new HttpHeaders();
+    headers = headers.set(
+      'Authorization',
+      'Bearer ' + localStorage.getItem('token')
+    );
+    this.http.head;
+    return this.http.get<contractlistresp>(url, {
+      headers,
+    });
   }
 }
