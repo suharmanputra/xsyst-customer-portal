@@ -55,7 +55,7 @@ export class ContractPageComponent implements OnInit {
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.setLoadingAnimation(true);
     this.xsystbackend.getallcontract().subscribe((jsonObj) => {
-      console.log(jsonObj);
+      // console.log(jsonObj);
       this.dataSource = new MatTableDataSource(jsonObj.data.list_contract);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
