@@ -3,6 +3,7 @@ import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { loginresp } from '../interface/loginresp';
 import { ChangepasswordResp } from '../interface/changepassword';
 import { CustomerLoginDataResp } from '../interface/customerlogindata';
+import { tokencheckresp } from '../interface/tokencheckresp';
 
 @Injectable()
 export class XsystbackendService {
@@ -84,5 +85,13 @@ export class XsystbackendService {
     return this.http.put<ChangepasswordResp>(url, body, {
       headers,
     });
+  }
+
+  checktoken() {
+    const url = this.mainURL + 'api/token/checkcustomerlogin';
+    const body = {
+      jwt: localStorage.getItem('token'),
+    };
+    return this.http.post<tokencheckresp>(url, body);
   }
 }

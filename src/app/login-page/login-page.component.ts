@@ -24,12 +24,28 @@ export class LoginPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    localStorage.setItem('userid', '');
-    localStorage.setItem('username', '');
-    localStorage.setItem('token', '');
     this.menuBarService.setMenuVisible(false);
-    // this.menuBarService.setIsAuthenticated(true);
-    // this.router.navigateByUrl('/dashboard');
+
+    if (localStorage.getItem('token') != '') {
+      this.xsystbackend.checktoken().subscribe((jsonObj) => {
+        if (
+          jsonObj.status === '00' &&
+          jsonObj.data.valid === true &&
+          jsonObj.data.expired === false
+        ) {
+          this.menuBarService.setIsAuthenticated(true);
+          this.router.navigateByUrl('/dashboard');
+        } else {
+          localStorage.setItem('userid', '');
+          localStorage.setItem('username', '');
+          localStorage.setItem('token', '');
+        }
+      });
+    } else {
+      localStorage.setItem('userid', '');
+      localStorage.setItem('username', '');
+      localStorage.setItem('token', '');
+    }
   }
 
   checkLogin(username: string, password: string) {

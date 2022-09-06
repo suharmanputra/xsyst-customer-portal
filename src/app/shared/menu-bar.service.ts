@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { XsystbackendService } from '../shared/xsystbackend.service';
 @Injectable()
 export class MenuBarService {
   private btnMenu = new BehaviorSubject('menu');
@@ -12,7 +13,10 @@ export class MenuBarService {
   private loadingAnimation = new BehaviorSubject(false);
   sharedLoadingAnimation = this.loadingAnimation;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private xsystbackend: XsystbackendService
+  ) {}
 
   setMenuVisible(isonloginpage: boolean) {
     if (isonloginpage) {
@@ -26,5 +30,23 @@ export class MenuBarService {
   }
   setLoadingAnimation(isDisplay: boolean) {
     this.loadingAnimation.next(isDisplay);
+  }
+
+  checkloginbytoken() {
+    if (localStorage.getItem('token') != '') {
+      this.xsystbackend.checktoken().subscribe((jsonObj) => {
+        if (
+          jsonObj.status === '00' &&
+          jsonObj.data.valid === true &&
+          jsonObj.data.expired === false
+        ) {
+          this.setIsAuthenticated(true);
+        } else {
+          this.router.navigateByUrl('/');
+        }
+      });
+    } else {
+      this.router.navigateByUrl('/');
+    }
   }
 }
