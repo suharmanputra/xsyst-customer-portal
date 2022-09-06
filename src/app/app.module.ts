@@ -56,6 +56,7 @@ import { MenuBarService } from './shared/menu-bar.service';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardPageComponent } from './dashboard-page/dashboard-page.component';
 import { ContractPageComponent } from './contract-page/contract-page.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 @NgModule({
   imports: [
@@ -115,6 +116,7 @@ import { ContractPageComponent } from './contract-page/contract-page.component';
     TopBarComponent,
     DashboardPageComponent,
     ContractPageComponent,
+    ProductPageComponent,
   ],
   bootstrap: [AppComponent],
   providers: [XsystbackendService, MenuBarService, FontService],

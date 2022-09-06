@@ -40,6 +40,7 @@ export class TopBarComponent implements OnInit {
     this.menuBarService.setMenuVisible(false);
     localStorage.setItem('userid', '');
     localStorage.setItem('username', '');
+    localStorage.setItem('token', '');
     this.router.navigateByUrl('/login');
   }
 }

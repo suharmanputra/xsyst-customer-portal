@@ -8,19 +8,7 @@ import { ViewChild, TemplateRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { contractlistresp } from '../interface/contractlistresp';
-
-export interface ListContract {
-  id_contract: number;
-  id_owner: number;
-  owner_name: string;
-  contract_no: string;
-  contract_date: Date;
-  contract_start_date: Date;
-  contract_estimated_end_date: Date;
-  kode_sales: string;
-  nama_sales: string;
-}
+import { ListContract } from '../interface/contractlistresp';
 
 @Component({
   selector: 'app-contract-page',
@@ -35,6 +23,7 @@ export class ContractPageComponent implements OnInit {
     'contract_start_date',
     'contract_estimated_end_date',
     'nama_sales',
+    'detail',
   ];
 
   dataSource: MatTableDataSource<ListContract>;
@@ -52,6 +41,16 @@ export class ContractPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.menuBarService.checkloginbytoken();
+    this.menuBarService.setMenuVisible(true);
+
+    this.menuBarService.globalIsAuthenticated.subscribe((result) => {
+      if (result === false) {
+        this.router.navigateByUrl('/');
+      } else {
+      }
+    });
+
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.setLoadingAnimation(true);
     this.xsystbackend.getallcontract().subscribe((jsonObj) => {
@@ -70,5 +69,9 @@ export class ContractPageComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  showdetail(id_contract: number) {
+    this.router.navigateByUrl('/product?id=' + id_contract);
   }
 }
