@@ -13,9 +13,7 @@
     "target": "ES2015",
     "typeRoots": ["node_modules/@types"],
     "removeComments": true,
-    "lib": ["ES2018", "DOM"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "lib": ["ES2018", "DOM"]
   },
   "angularCompilerOptions": {
     "enableIvy": true,
