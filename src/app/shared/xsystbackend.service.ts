@@ -5,6 +5,7 @@ import { ChangepasswordResp } from '../interface/changepassword';
 import { CustomerLoginDataResp } from '../interface/customerlogindata';
 import { tokencheckresp } from '../interface/tokencheckresp';
 import { contractlistresp } from '../interface/contractlistresp';
+import { productlistresp } from '../interface/productlistresp';
 
 @Injectable()
 export class XsystbackendService {
@@ -63,7 +64,7 @@ export class XsystbackendService {
       'Authorization',
       'Bearer ' + localStorage.getItem('token')
     );
-    this.http.head;
+
     return this.http.get<CustomerLoginDataResp>(url, {
       headers,
     });
@@ -82,7 +83,7 @@ export class XsystbackendService {
       'Authorization',
       'Bearer ' + localStorage.getItem('token')
     );
-    this.http.head;
+
     return this.http.put<ChangepasswordResp>(url, body, {
       headers,
     });
@@ -103,8 +104,24 @@ export class XsystbackendService {
       'Authorization',
       'Bearer ' + localStorage.getItem('token')
     );
-    this.http.head;
+
     return this.http.get<contractlistresp>(url, {
+      headers,
+    });
+  }
+
+  getallproduct(id_contract: number) {
+    const url = this.mainURL + 'api/customer/login/getallproduct';
+    const body = {
+      id_contract: id_contract,
+    };
+    let headers = new HttpHeaders();
+    headers = headers.set(
+      'Authorization',
+      'Bearer ' + localStorage.getItem('token')
+    );
+
+    return this.http.put<productlistresp>(url, body, {
       headers,
     });
   }
