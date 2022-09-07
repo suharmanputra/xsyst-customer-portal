@@ -40,6 +40,17 @@
   z-index: 2;
 }
 
+.backbutton {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+}
+
+.backbuttonhide {
+  display: none;
+}
+
 .myMenuHide {
   display: none;
 }

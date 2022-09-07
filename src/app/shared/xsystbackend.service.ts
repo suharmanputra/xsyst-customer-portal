@@ -78,6 +78,7 @@ export class XsystbackendService {
       email: email,
       phone: phone,
     };
+
     let headers = new HttpHeaders();
     headers = headers.set(
       'Authorization',
@@ -110,7 +111,7 @@ export class XsystbackendService {
     });
   }
 
-  getallproduct(id_contract: number) {
+  getallproduct(id_contract: string) {
     const url = this.mainURL + 'api/customer/login/getallproduct';
     const body = {
       id_contract: id_contract,
@@ -121,7 +122,7 @@ export class XsystbackendService {
       'Bearer ' + localStorage.getItem('token')
     );
 
-    return this.http.put<productlistresp>(url, body, {
+    return this.http.post<productlistresp>(url, body, {
       headers,
     });
   }

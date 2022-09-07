@@ -71,6 +71,6 @@ export class ContractPageComponent implements OnInit {
   }
 
   showdetail(id_contract: number) {
-    this.router.navigateByUrl('/product?id=' + id_contract);
+    this.router.navigateByUrl('dashboard/contract/product?id=' + id_contract);
   }
 }

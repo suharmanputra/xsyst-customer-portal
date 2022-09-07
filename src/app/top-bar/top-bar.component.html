@@ -16,3 +16,11 @@
 <div *ngIf="showProgressBar" class="alwaysontop">
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
+<div class="{{ btnNav }}">
+  <button mat-icon-button aria-label="Back" (click)="redirect_back()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button mat-icon-button aria-label="Home" (click)="redirect_home()">
+    <mat-icon>home</mat-icon>
+  </button>
+</div>

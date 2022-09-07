@@ -5,7 +5,9 @@ import { XsystbackendService } from '../shared/xsystbackend.service';
 @Injectable()
 export class MenuBarService {
   private btnMenu = new BehaviorSubject('menu');
+  private btnNav = new BehaviorSubject('nav');
   globalBtnMenu = this.btnMenu;
+  globalnavbutton = this.btnNav;
   private isAdmin = new BehaviorSubject(false);
   adminMenuVisible = this.isAdmin;
   private isAuthenticated = new BehaviorSubject(false);
@@ -18,9 +20,15 @@ export class MenuBarService {
     private xsystbackend: XsystbackendService
   ) {}
 
-  setMenuVisible(isonloginpage: boolean) {
+  setMenuVisible(isonloginpage: boolean, ondashboard: boolean = false) {
     if (isonloginpage) {
       this.btnMenu.next('myMenu');
+
+      if (ondashboard) {
+        this.btnNav.next('backbuttonhide');
+      } else {
+        this.btnNav.next('backbutton');
+      }
     } else {
       this.btnMenu.next('myMenuHide');
     }

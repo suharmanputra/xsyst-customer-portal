@@ -10,6 +10,7 @@ import { MenuBarService } from '../shared/menu-bar.service';
 export class TopBarComponent implements OnInit {
   matMenu: string;
   btnmenu: string;
+  btnNav: string;
   showProgressBar: boolean;
   menuAdminPanel: boolean;
   constructor(
@@ -23,6 +24,10 @@ export class TopBarComponent implements OnInit {
       this.btnmenu = result;
     });
 
+    this.menuBarService.globalnavbutton.subscribe((result) => {
+      this.btnNav = result;
+    });
+
     this.menuBarService.sharedLoadingAnimation.subscribe((isdisplayed) => {
       this.showProgressBar = isdisplayed;
     });
@@ -34,6 +39,19 @@ export class TopBarComponent implements OnInit {
 
   redirect_home() {
     this.router.navigateByUrl('/dashboard');
+  }
+
+  redirect_back() {
+    // console.log(window.location.href);
+    let urlsplitlen: number = window.location.href.split('/').length - 1;
+
+    let backurl: string = '';
+
+    for (let i: number = 0; i < urlsplitlen; i++) {
+      backurl += window.location.href.split('/')[i] + '/';
+    }
+    backurl = backurl.slice(0, -1);
+    this.router.navigateByUrl(backurl.split('#')[1]);
   }
 
   logout() {

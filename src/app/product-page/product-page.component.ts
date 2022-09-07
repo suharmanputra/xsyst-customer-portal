@@ -8,25 +8,37 @@ import { ViewChild, TemplateRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ListContract } from '../interface/contractlistresp';
+import { ProductList } from '../interface/productlistresp';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state(
+        'void',
+        style({ height: '0px', minHeight: '0', visibility: 'hidden' })
+      ),
+      state('*', style({ height: '*', visibility: 'visible' })),
+      transition('void <=> *', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class ProductPageComponent implements OnInit {
-  displayedColumns: string[] = [
-    'owner_name',
-    'contract_no',
-    'contract_date',
-    'contract_start_date',
-    'contract_estimated_end_date',
-    'nama_sales',
-    'detail',
-  ];
+  displayedColumns: string[] = ['name', 'note', 'active'];
+  isExpansionDetailRow = (i: number, row: Object) =>
+    row.hasOwnProperty('detailRow');
+  expandedElement: any;
 
-  dataSource: MatTableDataSource<ListContract>;
+  dataSource: MatTableDataSource<ProductList>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -37,7 +49,8 @@ export class ProductPageComponent implements OnInit {
     private snackBar: MatSnackBar,
     public menuBarService: MenuBarService,
     public xsystbackend: XsystbackendService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -53,12 +66,14 @@ export class ProductPageComponent implements OnInit {
 
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.setLoadingAnimation(true);
-    this.xsystbackend.getallcontract().subscribe((jsonObj) => {
-      this.dataSource = new MatTableDataSource(jsonObj.data.list_contract);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-      this.menuBarService.setLoadingAnimation(false);
-    });
+    this.xsystbackend
+      .getallproduct(this.route.snapshot.queryParamMap.get('id'))
+      .subscribe((jsonObj) => {
+        this.dataSource = new MatTableDataSource(jsonObj.data.product_list);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.menuBarService.setLoadingAnimation(false);
+      });
   }
 
   applyFilter(event: Event) {
