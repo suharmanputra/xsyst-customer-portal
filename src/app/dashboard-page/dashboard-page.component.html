@@ -1,27 +1,66 @@
 <form>
   <div class="pagecontainer">
-    Selamat datang {{ username }}
+    <h4>Selamat datang {{ username }}</h4>
     <br />
 
-    <button
-      mat-button
-      color="primary"
-      (click)="menuBarService.navigatepage('dashboard')"
-    >
-      <mat-icon>home</mat-icon>
-      <br />
-      <span>Home</span>
-    </button>
+    <section class="layout-grid">
+      <div>
+        <button
+          class="btn-menu"
+          mat-button
+          color="white"
+          (click)="menuBarService.navigatepage('dashboard')"
+        >
+          <mat-icon>home</mat-icon>
+          <br />
+          <span>Home</span>
+        </button>
+      </div>
 
-    <button
-      mat-button
-      color="primary"
-      (click)="menuBarService.navigatepage('dashboard/contract')"
-    >
-      <mat-icon>handshake</mat-icon>
-      <br />
-      <span>Contract</span>
-    </button>
+      <div>
+        <button
+          class="btn-menu"
+          mat-button
+          color="white"
+          (click)="menuBarService.navigatepage('dashboard/contract')"
+        >
+          <mat-icon>handshake</mat-icon>
+          <br />
+          <span>Contract</span>
+        </button>
+      </div>
+
+      <div>
+        <button class="btn-menu" mat-button color="white">
+          <mat-icon>attach_money</mat-icon>
+          <br />
+          <span>Invoice</span>
+        </button>
+      </div>
+
+      <div>
+        <button class="btn-menu" mat-button color="white">
+          <mat-icon>contact_support</mat-icon>
+          <br />
+          <span>Enquiries</span>
+        </button>
+      </div>
+
+      <div>
+        <button
+          class="btn-menu"
+          mat-button
+          color="white"
+          (click)="openSetting()"
+        >
+          <mat-icon>settings</mat-icon>
+          <br />
+          <span>Setting</span>
+        </button>
+      </div>
+
+      <div></div>
+    </section>
 
     <!-- <button
       mat-button
@@ -32,24 +71,6 @@
       <br />
       <span>Device</span>
     </button> -->
-
-    <button mat-button color="primary">
-      <mat-icon>attach_money</mat-icon>
-      <br />
-      <span>Invoice</span>
-    </button>
-
-    <button mat-button color="primary">
-      <mat-icon>contact_support</mat-icon>
-      <br />
-      <span>Enquiries</span>
-    </button>
-
-    <button mat-button color="primary" (click)="openSetting()">
-      <mat-icon>settings</mat-icon>
-      <br />
-      <span>Setting</span>
-    </button>
   </div>
 
   <ng-template #settingdialog>
