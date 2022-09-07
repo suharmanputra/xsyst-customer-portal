@@ -33,7 +33,7 @@ import {
   ],
 })
 export class ProductPageComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'note', 'active'];
+  displayedColumns: string[] = ['name', 'note', 'active', 'detail'];
   isExpansionDetailRow = (i: number, row: Object) =>
     row.hasOwnProperty('detailRow');
   expandedElement: any;

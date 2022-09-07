@@ -2,7 +2,7 @@
   <div class="pagecontainer">
     <mat-card>Device List</mat-card>
     <mat-divider></mat-divider>
-    <!-- <mat-card>
+    <mat-card>
       <mat-form-field>
         <mat-label>Filter</mat-label>
         <input
@@ -47,75 +47,16 @@
               {{ row.active }}
             </td>
           </ng-container>
-           <ng-container matColumnDef="detail">
+          <ng-container matColumnDef="detail">
             <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
             <td mat-cell *matCellDef="let row">
-              <button
-                mat-button
-                color="primary"
-                (click)="showdetail(row.id_product_identity)"
-              >
-                Detail
-              </button>
+              <button mat-button color="primary">Detail</button>
             </td>
-          </ng-container> 
-
-          <ng-container matColumnDef="expandedDetail">
-            <mat-cell *matCellDef="let detail"> this is detail </mat-cell>
           </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
-           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr> 
-          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
-          <mat-row
-            *matRowDef="let row; columns: displayedColumns"
-            matRipple
-            class="element-row"
-            [class.expanded]="expandedElement == row"
-            (click)="expandedElement = row"
-          ></mat-row>
-          <mat-row
-            *matRowDef="
-              let row;
-              columns: ['expandedDetail'];
-              when: isExpansionDetailRow
-            "
-            [@detailExpand]="
-              row.element == expandedElement ? 'expanded' : 'collapsed'
-            "
-            style="overflow: hidden"
-          >
-          </mat-row>
-           <tr
-            mat-row
-            *matRowDef="let row; columns: displayedColumns"
-            class="example-element-row"
-            [class.example-expanded-row]="expandedElement === row"
-            (click)="expandedElement = expandedElement === row ? null : row"
-          ></tr> 
-           <tr>
-            <mat-row
-              *matRowDef="let row; columns: displayedColumns"
-              matRipple
-              class="element-row"
-              [class.expanded]="expandedElement == row"
-              (click)="expandedElement = row"
-            ></mat-row>
-            <mat-row
-              *matRowDef="
-                let row;
-                columns: ['expandedDetail'];
-                when: isExpansionDetailRow
-              "
-              [@detailExpand]="
-                row.element == expandedElement ? 'expanded' : 'collapsed'
-              "
-              style="overflow: hidden"
-            >
-            </mat-row>
-          </tr> 
-
-           Row shown when there is no matching data. 
+          <!-- Row shown when there is no matching data.  -->
           <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">
               No data matching the filter "{{ input.value }}"
@@ -125,57 +66,6 @@
 
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
       </div>
-    </mat-card> -->
-
-    <div class="example-container mat-elevation-z8">
-      <mat-table #table [dataSource]="dataSource">
-        <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
-        <!-- Position Column -->
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="note">
-          <mat-header-cell *matHeaderCellDef> Note </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{ element.note }} </mat-cell>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="active">
-          <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{ element.active }} </mat-cell>
-        </ng-container>
-
-        <!-- Expanded Content Column - The detail row is made up of this one column -->
-        <ng-container matColumnDef="expandedDetail">
-          <mat-cell *matCellDef="let detail"> detail </mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row
-          *matRowDef="let row; columns: displayedColumns"
-          matRipple
-          class="element-row"
-          [class.expanded]="expandedElement == row"
-          (click)="expandedElement = row"
-        ></mat-row>
-        <mat-row
-          *matRowDef="
-            let row;
-            columns: ['expandedDetail'];
-            when: isExpansionDetailRow
-          "
-          [@detailExpand]="
-            row.element == expandedElement ? 'expanded' : 'collapsed'
-          "
-          style="overflow: hidden"
-        >
-        </mat-row>
-      </mat-table>
-    </div>
+    </mat-card>
   </div>
 </form>
