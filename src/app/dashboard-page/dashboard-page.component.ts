@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MenuBarService } from '../shared/menu-bar.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { XsystbackendService } from '../shared/xsystbackend.service';
-import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ViewChild, TemplateRef } from '@angular/core';
 
@@ -18,8 +17,6 @@ export class DashboardPageComponent implements OnInit {
   email: string;
   phone: string;
   constructor(
-    private actRouter: ActivatedRoute,
-    private router: Router,
     private snackBar: MatSnackBar,
     public menuBarService: MenuBarService,
     public xsystbackend: XsystbackendService,
@@ -34,7 +31,7 @@ export class DashboardPageComponent implements OnInit {
 
     this.menuBarService.globalIsAuthenticated.subscribe((result) => {
       if (result === false) {
-        this.router.navigateByUrl('/');
+        this.menuBarService.navigatepage('/');
       } else {
       }
     });

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 import { MenuBarService } from '../shared/menu-bar.service';
 
 @Component({
@@ -13,11 +12,7 @@ export class TopBarComponent implements OnInit {
   btnNav: string;
   showProgressBar: boolean;
   menuAdminPanel: boolean;
-  constructor(
-    private actRouter: ActivatedRoute,
-    private router: Router,
-    private menuBarService: MenuBarService
-  ) {}
+  constructor(private menuBarService: MenuBarService) {}
 
   ngOnInit() {
     this.menuBarService.globalBtnMenu.subscribe((result) => {
@@ -38,7 +33,7 @@ export class TopBarComponent implements OnInit {
   }
 
   redirect_home() {
-    this.router.navigateByUrl('/dashboard');
+    this.menuBarService.navigatepage('/dashboard');
   }
 
   redirect_back() {
@@ -51,7 +46,7 @@ export class TopBarComponent implements OnInit {
       backurl += window.location.href.split('/')[i] + '/';
     }
     backurl = backurl.slice(0, -1);
-    this.router.navigateByUrl(backurl.split('#')[1]);
+    this.menuBarService.navigatepage(backurl.split('#')[1]);
   }
 
   logout() {
@@ -59,6 +54,6 @@ export class TopBarComponent implements OnInit {
     localStorage.setItem('userid', '');
     localStorage.setItem('username', '');
     localStorage.setItem('token', '');
-    this.router.navigateByUrl('/login');
+    this.menuBarService.navigatepage('/login');
   }
 }

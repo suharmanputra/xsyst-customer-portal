@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MenuBarService } from '../shared/menu-bar.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { XsystbackendService } from '../shared/xsystbackend.service';
-import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 import { ViewChild, TemplateRef } from '@angular/core';
 
 @Component({
@@ -15,8 +14,6 @@ export class LoginPageComponent implements OnInit {
   @ViewChild('changepassworddialog') changepassworddialog: TemplateRef<any>;
   hide = true;
   constructor(
-    private actRouter: ActivatedRoute,
-    private router: Router,
     private snackBar: MatSnackBar,
     private menuBarService: MenuBarService,
     private xsystbackend: XsystbackendService,
@@ -34,7 +31,7 @@ export class LoginPageComponent implements OnInit {
           jsonObj.data.expired === false
         ) {
           this.menuBarService.setIsAuthenticated(true);
-          this.router.navigateByUrl('/dashboard');
+          this.menuBarService.navigatepage('/dashboard');
         } else {
           localStorage.setItem('userid', '');
           localStorage.setItem('username', '');
@@ -80,7 +77,7 @@ export class LoginPageComponent implements OnInit {
         } else {
           //navigate ke dashboard
           this.menuBarService.setIsAuthenticated(true);
-          this.router.navigateByUrl('/dashboard');
+          this.menuBarService.navigatepage('/dashboard');
         }
 
         localStorage.setItem(
@@ -120,7 +117,7 @@ export class LoginPageComponent implements OnInit {
           .subscribe((jsonObj) => {
             if (jsonObj.status === '00') {
               this.menuBarService.setIsAuthenticated(true);
-              this.router.navigateByUrl('/dashboard');
+              this.menuBarService.navigatepage('/dashboard');
             } else {
               this.snackBar.open(jsonObj.message, 'Ok', {
                 duration: 3000,

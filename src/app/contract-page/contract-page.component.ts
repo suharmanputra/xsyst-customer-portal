@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MenuBarService } from '../shared/menu-bar.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { XsystbackendService } from '../shared/xsystbackend.service';
-import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 import { ViewChild, TemplateRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -32,8 +31,6 @@ export class ContractPageComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    private actRouter: ActivatedRoute,
-    private router: Router,
     private snackBar: MatSnackBar,
     public menuBarService: MenuBarService,
     public xsystbackend: XsystbackendService,
@@ -46,7 +43,7 @@ export class ContractPageComponent implements OnInit {
 
     this.menuBarService.globalIsAuthenticated.subscribe((result) => {
       if (result === false) {
-        this.router.navigateByUrl('/');
+        this.menuBarService.navigatepage('/');
       } else {
       }
     });
@@ -71,6 +68,8 @@ export class ContractPageComponent implements OnInit {
   }
 
   showdetail(id_contract: number) {
-    this.router.navigateByUrl('dashboard/contract/product?id=' + id_contract);
+    this.menuBarService.navigatepage(
+      'dashboard/contract/product?id=' + id_contract
+    );
   }
 }

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MenuBarService } from '../shared/menu-bar.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { XsystbackendService } from '../shared/xsystbackend.service';
-import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ViewChild, TemplateRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -45,12 +45,10 @@ export class ProductPageComponent implements OnInit {
 
   constructor(
     private actRouter: ActivatedRoute,
-    private router: Router,
     private snackBar: MatSnackBar,
     public menuBarService: MenuBarService,
     public xsystbackend: XsystbackendService,
-    public dialog: MatDialog,
-    private route: ActivatedRoute
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -59,7 +57,7 @@ export class ProductPageComponent implements OnInit {
 
     this.menuBarService.globalIsAuthenticated.subscribe((result) => {
       if (result === false) {
-        this.router.navigateByUrl('/');
+        this.menuBarService.navigatepage('/');
       } else {
       }
     });
@@ -67,7 +65,7 @@ export class ProductPageComponent implements OnInit {
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.setLoadingAnimation(true);
     this.xsystbackend
-      .getallproduct(this.route.snapshot.queryParamMap.get('id'))
+      .getallproduct(this.actRouter.snapshot.queryParamMap.get('id'))
       .subscribe((jsonObj) => {
         this.dataSource = new MatTableDataSource(jsonObj.data.product_list);
         this.dataSource.paginator = this.paginator;
@@ -85,6 +83,6 @@ export class ProductPageComponent implements OnInit {
   }
 
   showdetail(id_contract: number) {
-    this.router.navigateByUrl('/product?id=' + id_contract);
+    this.menuBarService.navigatepage('/product?id=' + id_contract);
   }
 }
