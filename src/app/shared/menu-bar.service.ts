@@ -58,7 +58,7 @@ export class MenuBarService {
     }
   }
 
-  navigatepage(url: string) {
-    this.router.navigateByUrl('/' + url);
-  }
+  // navigatepage(url: string) {
+  //   this.router.navigateByUrl('/' + url);
+  // }
 }
