@@ -23,7 +23,6 @@ export class MenuBarService {
   setMenuVisible(isonloginpage: boolean, ondashboard: boolean = false) {
     if (isonloginpage) {
       this.btnMenu.next('myMenu');
-
       if (ondashboard) {
         this.btnNav.next('backbuttonhide');
       } else {

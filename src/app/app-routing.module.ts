@@ -11,7 +11,12 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'dashboard', component: DashboardPageComponent },
   { path: 'dashboard/contract', component: ContractPageComponent },
+  { path: 'dashboard/contract/product', component: ProductPageComponent },
   { path: 'dashboard/contract/product/:id', component: ProductPageComponent },
+  {
+    path: 'dashboard/contract/product/:id/detail',
+    component: ProductdetailPageComponent,
+  },
   {
     path: 'dashboard/contract/product/:id/detail:id',
     component: ProductdetailPageComponent,
