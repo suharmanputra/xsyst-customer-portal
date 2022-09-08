@@ -77,7 +77,7 @@ export class LoginPageComponent implements OnInit {
         } else {
           //navigate ke dashboard
           this.menuBarService.setIsAuthenticated(true);
-          this.menuBarService.navigatepage('/dashboard');
+          this.menuBarService.navigatepage('dashboard');
         }
 
         localStorage.setItem(
@@ -117,7 +117,7 @@ export class LoginPageComponent implements OnInit {
           .subscribe((jsonObj) => {
             if (jsonObj.status === '00') {
               this.menuBarService.setIsAuthenticated(true);
-              this.menuBarService.navigatepage('/dashboard');
+              this.menuBarService.navigatepage('dashboard');
             } else {
               this.snackBar.open(jsonObj.message, 'Ok', {
                 duration: 3000,

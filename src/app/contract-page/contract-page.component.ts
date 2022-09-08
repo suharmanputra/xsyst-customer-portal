@@ -38,16 +38,7 @@ export class ContractPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menuBarService.checkloginbytoken();
     this.menuBarService.setMenuVisible(true);
-
-    this.menuBarService.globalIsAuthenticated.subscribe((result) => {
-      if (result === false) {
-        this.menuBarService.navigatepage('/');
-      } else {
-      }
-    });
-
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.setLoadingAnimation(true);
     this.xsystbackend.getallcontract().subscribe((jsonObj) => {

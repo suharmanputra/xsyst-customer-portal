@@ -52,15 +52,7 @@ export class ProductPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menuBarService.checkloginbytoken();
     this.menuBarService.setMenuVisible(true);
-
-    this.menuBarService.globalIsAuthenticated.subscribe((result) => {
-      if (result === false) {
-        this.menuBarService.navigatepage('/');
-      } else {
-      }
-    });
 
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.setLoadingAnimation(true);
@@ -83,6 +75,6 @@ export class ProductPageComponent implements OnInit {
   }
 
   showdetail(id_contract: number) {
-    this.menuBarService.navigatepage('/product?id=' + id_contract);
+    this.menuBarService.navigatepage('product?id=' + id_contract);
   }
 }

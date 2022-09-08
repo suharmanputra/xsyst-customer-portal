@@ -12,9 +12,11 @@ export class TopBarComponent implements OnInit {
   btnNav: string;
   showProgressBar: boolean;
   menuAdminPanel: boolean;
-  constructor(private menuBarService: MenuBarService) {}
+  constructor(public menuBarService: MenuBarService) {}
 
   ngOnInit() {
+    this.menuBarService.checkloginbytoken();
+
     this.menuBarService.globalBtnMenu.subscribe((result) => {
       this.btnmenu = result;
     });
@@ -47,13 +49,5 @@ export class TopBarComponent implements OnInit {
     }
     backurl = backurl.slice(0, -1);
     this.menuBarService.navigatepage(backurl.split('#')[1]);
-  }
-
-  logout() {
-    this.menuBarService.setMenuVisible(false);
-    localStorage.setItem('userid', '');
-    localStorage.setItem('username', '');
-    localStorage.setItem('token', '');
-    this.menuBarService.navigatepage('/login');
   }
 }

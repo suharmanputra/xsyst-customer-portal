@@ -20,8 +20,8 @@ export class MenuBarService {
     private xsystbackend: XsystbackendService
   ) {}
 
-  setMenuVisible(isonloginpage: boolean, ondashboard: boolean = false) {
-    if (isonloginpage) {
+  setMenuVisible(isnotonloginpage: boolean, ondashboard: boolean = false) {
+    if (isnotonloginpage) {
       this.btnMenu.next('myMenu');
       if (ondashboard) {
         this.btnNav.next('backbuttonhide');
@@ -31,6 +31,8 @@ export class MenuBarService {
     } else {
       this.btnMenu.next('myMenuHide');
     }
+    // this.btnMenu.next('myMenu');
+    // this.btnNav.next('backbutton');
   }
   setIsAuthenticated(isAuth: boolean) {
     this.isAuthenticated.next(isAuth);
@@ -49,15 +51,23 @@ export class MenuBarService {
         ) {
           this.setIsAuthenticated(true);
         } else {
-          this.router.navigateByUrl('/');
+          this.logout();
         }
       });
     } else {
-      this.router.navigateByUrl('/');
+      this.logout();
     }
   }
 
   navigatepage(url: string) {
     this.router.navigateByUrl('/' + url);
+  }
+
+  logout() {
+    this.setMenuVisible(false);
+    localStorage.setItem('userid', '');
+    localStorage.setItem('username', '');
+    localStorage.setItem('token', '');
+    this.navigatepage('login');
   }
 }
