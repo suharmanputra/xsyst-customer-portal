@@ -126,4 +126,20 @@ export class XsystbackendService {
       headers,
     });
   }
+
+  getproductdetail(id_product_identity: number) {
+    const url = this.mainURL + 'api/customer/login/product/id';
+    const body = {
+      id_product_identity: id_product_identity,
+    };
+    let headers = new HttpHeaders();
+    headers = headers.set(
+      'Authorization',
+      'Bearer ' + localStorage.getItem('token')
+    );
+
+    return this.http.post<productlistresp>(url, body, {
+      headers,
+    });
+  }
 }
