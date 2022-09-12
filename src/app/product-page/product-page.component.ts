@@ -74,7 +74,13 @@ export class ProductPageComponent implements OnInit {
     }
   }
 
-  showdetail(id_contract: number) {
-    this.menuBarService.navigatepage('product?id=' + id_contract);
+  showdetail(id_product: number) {
+    let url = (
+      window.location.href.split('#')[1] +
+      '/detail?id=' +
+      id_product
+    ).substring(1);
+    console.log(url);
+    this.menuBarService.navigatepage(url);
   }
 }

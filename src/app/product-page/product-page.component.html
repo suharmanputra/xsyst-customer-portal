@@ -50,7 +50,12 @@
             <ng-container matColumnDef="detail">
               <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
               <td class="lebar-td-100" mat-cell *matCellDef="let row">
-                <button class="btn-table" mat-button color="white">
+                <button
+                  class="btn-table"
+                  mat-button
+                  color="white"
+                  (click)="showdetail(row.id_product_identity)"
+                >
                   Detail
                 </button>
               </td>
