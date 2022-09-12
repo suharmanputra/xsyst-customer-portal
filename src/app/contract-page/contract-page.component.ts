@@ -60,7 +60,7 @@ export class ContractPageComponent implements OnInit {
 
   showdetail(id_contract: number) {
     this.menuBarService.navigatepage(
-      'dashboard/contract/product?id=' + id_contract
+      'dashboard/contract/product/' + id_contract
     );
   }
 }

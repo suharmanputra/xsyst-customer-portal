@@ -56,8 +56,9 @@ export class ProductPageComponent implements OnInit {
 
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.setLoadingAnimation(true);
+    console.log(this.actRouter.snapshot.queryParams['idcontract']);
     this.xsystbackend
-      .getallproduct(this.actRouter.snapshot.queryParamMap.get('id'))
+      .getallproduct(this.actRouter.snapshot.queryParamMap.get('idcontract'))
       .subscribe((jsonObj) => {
         this.dataSource = new MatTableDataSource(jsonObj.data.product_list);
         this.dataSource.paginator = this.paginator;
@@ -77,7 +78,7 @@ export class ProductPageComponent implements OnInit {
   showdetail(id_product: number) {
     let url = (
       window.location.href.split('#')[1] +
-      '/detail?id=' +
+      '/detail/' +
       id_product
     ).substring(1);
     console.log(url);

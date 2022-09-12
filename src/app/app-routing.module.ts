@@ -12,13 +12,16 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardPageComponent },
   { path: 'dashboard/contract', component: ContractPageComponent },
   { path: 'dashboard/contract/product', component: ProductPageComponent },
-  { path: 'dashboard/contract/product/:id', component: ProductPageComponent },
   {
-    path: 'dashboard/contract/product/:id/detail',
+    path: 'dashboard/contract/product/:idcontract',
+    component: ProductPageComponent,
+  },
+  {
+    path: 'dashboard/contract/product/:idcontract/detail',
     component: ProductdetailPageComponent,
   },
   {
-    path: 'dashboard/contract/product/:id/detail:id',
+    path: 'dashboard/contract/product/:ididcontract/detail/:idproduct',
     component: ProductdetailPageComponent,
   },
 ];
