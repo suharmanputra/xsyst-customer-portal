@@ -50,7 +50,12 @@
             <ng-container matColumnDef="detail">
               <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
               <td class="lebar-td-100" mat-cell *matCellDef="let row">
-                <button class="btn-table" mat-button color="white">
+                <button
+                  class="btn-table"
+                  mat-stroked-button
+                  mat-button
+                  color="white"
+                >
                   Detail
                 </button>
               </td>
@@ -73,6 +78,7 @@
         [pageSizeOptions]="[5, 10, 25, 100]"
         [pageSize]="5"
       ></mat-paginator>
+      <br />
     </mat-card>
   </div>
 </form>

@@ -89,6 +89,7 @@
               <td class="lebar-td-100" mat-cell *matCellDef="let row">
                 <button
                   class="btn-table"
+                  mat-stroked-button
                   mat-button
                   color="White"
                   (click)="showdetail(row.id_contract)"
@@ -116,6 +117,7 @@
           [pageSize]="5"
         ></mat-paginator>
       </div>
+      <br />
     </mat-card>
   </div>
 </form>
