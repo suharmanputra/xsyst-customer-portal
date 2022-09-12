@@ -1,10 +1,8 @@
 <form>
   <div class="pagecontainer">
-    <div>
-      <h4>Device List</h4>
-    </div>
     <mat-divider></mat-divider>
     <mat-card>
+      <mat-card-title>Device List</mat-card-title>
       <mat-form-field>
         <mat-label>Filter</mat-label>
         <input
@@ -52,11 +50,12 @@
               <td class="lebar-td-100" mat-cell *matCellDef="let row">
                 <button
                   class="btn-table"
-                  mat-stroked-button
+                  title="View Detail"
+                  mat-mini-fab
                   mat-button
                   color="white"
                 >
-                  Detail
+                  <mat-icon>search</mat-icon>
                 </button>
               </td>
             </ng-container>
