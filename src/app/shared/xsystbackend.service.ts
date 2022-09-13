@@ -6,6 +6,7 @@ import { CustomerLoginDataResp } from '../interface/customerlogindata';
 import { tokencheckresp } from '../interface/tokencheckresp';
 import { contractlistresp } from '../interface/contractlistresp';
 import { productlistresp } from '../interface/productlistresp';
+import { Productdetailresp } from '../interface/productdetailresp';
 
 @Injectable()
 export class XsystbackendService {
@@ -138,7 +139,7 @@ export class XsystbackendService {
       'Bearer ' + localStorage.getItem('token')
     );
 
-    return this.http.post<productlistresp>(url, body, {
+    return this.http.post<Productdetailresp>(url, body, {
       headers,
     });
   }

@@ -9,28 +9,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductList } from '../interface/productlistresp';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 
 @Component({
   selector: 'app-product-page',
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css'],
-  animations: [
-    trigger('detailExpand', [
-      state(
-        'void',
-        style({ height: '0px', minHeight: '0', visibility: 'hidden' })
-      ),
-      state('*', style({ height: '*', visibility: 'visible' })),
-      transition('void <=> *', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
-    ]),
-  ],
 })
 export class ProductPageComponent implements OnInit {
   displayedColumns: string[] = ['name', 'note', 'active', 'detail'];
@@ -56,7 +39,7 @@ export class ProductPageComponent implements OnInit {
 
     this.menuBarService.setMenuVisible(true);
     this.menuBarService.setLoadingAnimation(true);
-        this.xsystbackend
+    this.xsystbackend
       .getallproduct(this.actRouter.snapshot.params['idcontract'])
       .subscribe((jsonObj) => {
         this.dataSource = new MatTableDataSource(jsonObj.data.product_list);

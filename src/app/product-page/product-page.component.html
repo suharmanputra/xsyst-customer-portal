@@ -16,7 +16,15 @@
 
       <div class="tb-container mat-elevation-z8 win-form">
         <div class="tb-table-container">
-          <table class="table-grid" mat-table [dataSource]="dataSource" matSort>
+          <table
+            mat-table
+            [dataSource]="dataSource"
+            class="table-grid"
+            matSort
+            matSortActive="created"
+            matSortDisableClear
+            matSortDirection="desc"
+          >
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>
                 Product Name
