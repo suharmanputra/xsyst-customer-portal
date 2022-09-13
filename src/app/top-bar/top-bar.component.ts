@@ -51,7 +51,7 @@ export class TopBarComponent implements OnInit {
         backurlroute += backurl.split('/')[i] + '/';
       }
     }
-    console.log(backurlroute);
+    // console.log(backurlroute);
     this.menuBarService.navigatepage(backurlroute.slice(0, -1));
   }
 }

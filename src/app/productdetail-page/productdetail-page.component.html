@@ -15,7 +15,6 @@
               (keyup)="applyFilterCounterHistory($event)"
             />
           </mat-form-field>
-
           <div class="tb-container mat-elevation-z8 win-form">
             <div class="tb-table-container">
               <table
@@ -26,6 +25,7 @@
                 matSortActive="collection_date"
                 matSortDisableClear
                 matSortDirection="desc"
+                id="tableCounterHistory"
               >
                 <ng-container matColumnDef="collection_date">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -169,14 +169,112 @@
               </table>
             </div>
           </div>
-
           <mat-paginator
             [pageSizeOptions]="[5, 10, 25, 100]"
             [pageSize]="5"
           ></mat-paginator>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="exporttable('tableCounterHistory')"
+          >
+            Export
+          </button>
           <br />
         </mat-tab>
-        <mat-tab label="Device Delivery"> </mat-tab>
+        <mat-tab label="Device Delivery">
+          <mat-form-field>
+            <mat-label>Filter</mat-label>
+            <input
+              matInput
+              placeholder="Cari Data.."
+              #input
+              (keyup)="applyFilterDeviceDelivery($event)"
+            />
+          </mat-form-field>
+          <div class="tb-container mat-elevation-z8 win-form">
+            <div class="tb-table-container">
+              <table
+                mat-table
+                [dataSource]="dsDeviceDelivery"
+                class="table-grid"
+                matSort
+                matSortActive="doc_date"
+                matSortDisableClear
+                matSortDirection="desc"
+                id="tableDeviceDelivery"
+              >
+                <ng-container matColumnDef="delivery_type">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Type
+                  </th>
+                  <td
+                    class="lebar-td-200"
+                    mat-cell
+                    *matCellDef="let row"
+                    align="left"
+                  >
+                    {{ row.delivery_type }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="doc_no">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Document Number
+                  </th>
+                  <td
+                    class="lebar-td-200"
+                    mat-cell
+                    *matCellDef="let row"
+                    align="left"
+                  >
+                    {{ row.doc_no }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="doc_date">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Date
+                  </th>
+                  <td
+                    class="lebar-td-200"
+                    mat-cell
+                    *matCellDef="let row"
+                    align="left"
+                  >
+                    {{ this.xsystbackend.formatDate(row.doc_date) }}
+                  </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="discolDeviceDelivery"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: discolDeviceDelivery"
+                ></tr>
+
+                <!-- Row shown when there is no matching data.  -->
+                <tr class="mat-row" *matNoDataRow>
+                  <td class="mat-cell" colspan="4">
+                    <!-- No data matching the filter "{{ input.value }}" -->
+                    Data Not Found.
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            [pageSize]="5"
+          ></mat-paginator>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="exporttable('tableDeviceDelivery')"
+          >
+            Export
+          </button>
+          <br />
+        </mat-tab>
       </mat-tab-group>
     </mat-card>
   </div>

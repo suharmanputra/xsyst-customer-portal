@@ -8,7 +8,9 @@ import { ViewChild, TemplateRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TableUtil } from '../shared/table-util';
 import { CounterHistory } from '../interface/productdetailresp';
+import { DeviceDeliveryHistory } from '../interface/productdetailresp';
 
 @Component({
   selector: 'app-productdetail-page',
@@ -28,10 +30,15 @@ export class ProductdetailPageComponent implements OnInit {
     'color_large_print',
   ];
 
-  dsCounterHistory: MatTableDataSource<CounterHistory>;
+  discolDeviceDelivery: string[] = ['delivery_type', 'doc_no', 'doc_date'];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  dsCounterHistory: MatTableDataSource<CounterHistory>;
+  dsDeviceDelivery: MatTableDataSource<DeviceDeliveryHistory>;
+
+  @ViewChild(MatPaginator) paginatorcounter: MatPaginator;
+  @ViewChild(MatPaginator) paginatordelivery: MatPaginator;
+  @ViewChild(MatSort) sortcounter: MatSort;
+  @ViewChild(MatSort) sortdelivery: MatSort;
 
   constructor(
     private actRouter: ActivatedRoute,
@@ -49,11 +56,20 @@ export class ProductdetailPageComponent implements OnInit {
     this.xsystbackend
       .getproductdetail(this.actRouter.snapshot.params['idproduct'])
       .subscribe((jsonObj) => {
+        //counter hostory
         this.dsCounterHistory = new MatTableDataSource(
           jsonObj.data.counter_history
         );
-        this.dsCounterHistory.paginator = this.paginator;
-        this.dsCounterHistory.sort = this.sort;
+        this.dsCounterHistory.paginator = this.paginatorcounter;
+        this.dsCounterHistory.sort = this.sortcounter;
+
+        //device delivery
+        this.dsDeviceDelivery = new MatTableDataSource(
+          jsonObj.data.device_delivery_history
+        );
+        this.dsDeviceDelivery.paginator = this.paginatordelivery;
+        this.dsDeviceDelivery.sort = this.sortcounter;
+
         this.menuBarService.setLoadingAnimation(false);
       });
   }
@@ -64,5 +80,17 @@ export class ProductdetailPageComponent implements OnInit {
     if (this.dsCounterHistory.paginator) {
       this.dsCounterHistory.paginator.firstPage();
     }
+  }
+
+  applyFilterDeviceDelivery(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dsDeviceDelivery.filter = filterValue.trim().toLowerCase();
+    if (this.dsDeviceDelivery.paginator) {
+      this.dsDeviceDelivery.paginator.firstPage();
+    }
+  }
+
+  exporttable(tableid: string) {
+    TableUtil.exportTableToExcel(tableid, tableid);
   }
 }
