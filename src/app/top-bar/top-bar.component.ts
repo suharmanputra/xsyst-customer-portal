@@ -39,15 +39,10 @@ export class TopBarComponent implements OnInit {
   }
 
   redirect_back() {
-    // console.log(window.location.href);
-    // let urlsplitlen: number = window.location.href.split('/').length - 1;
-
     let backurl: string = window.location.href.split('#')[1],
       lasturl: string = backurl.split('/')[backurl.split('/').length - 1],
       backurlroute: string = '';
-    console.log(lasturl);
-    console.log(Number.isInteger(parseInt(lasturl)));
-    if (Number.isInteger(backurl.split('/')[backurl.split('/').length - 1])) {
+    if (Number.isInteger(parseInt(lasturl))) {
       for (let i: number = 0; i < backurl.split('/').length - 2; i++) {
         backurlroute += backurl.split('/')[i] + '/';
       }
@@ -56,17 +51,7 @@ export class TopBarComponent implements OnInit {
         backurlroute += backurl.split('/')[i] + '/';
       }
     }
-    // for (let i: number = 0; i < urlsplitlen; i++) {
-    //   if (i == urlsplitlen - 1) {
-    //     if (!Number.isInteger(window.location.href.split('/')[i])) {
-    //       backurl += window.location.href.split('/')[i] + '/';
-    //     }
-    //   } else {
-    //     backurl += window.location.href.split('/')[i] + '/';
-    //   }
-    // }
-    // backurl = backurl.slice(0, -1);
     console.log(backurlroute);
-    // this.menuBarService.navigatepage(backurl.split('#')[1]);
+    this.menuBarService.navigatepage(backurlroute.slice(0, -1));
   }
 }
