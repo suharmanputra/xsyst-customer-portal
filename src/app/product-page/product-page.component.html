@@ -1,10 +1,9 @@
 <form>
   <div class="pagecontainer">
-    <div>
-      <h4>Device List</h4>
-    </div>
+    <div class="animated-gradient"></div>
     <mat-divider></mat-divider>
     <mat-card>
+      <mat-card-title>Device List</mat-card-title>
       <mat-form-field>
         <mat-label>Filter</mat-label>
         <input
@@ -52,11 +51,12 @@
               <td class="lebar-td-100" mat-cell *matCellDef="let row">
                 <button
                   class="btn-table"
+                  title="View Detail"
+                  mat-mini-fab
                   mat-button
                   color="white"
-                  (click)="showdetail(row.id_product_identity)"
                 >
-                  Detail
+                  <mat-icon>search</mat-icon>
                 </button>
               </td>
             </ng-container>
@@ -78,6 +78,7 @@
         [pageSizeOptions]="[5, 10, 25, 100]"
         [pageSize]="5"
       ></mat-paginator>
+      <br />
     </mat-card>
   </div>
 </form>

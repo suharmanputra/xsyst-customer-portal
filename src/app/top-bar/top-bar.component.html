@@ -1,5 +1,10 @@
 <div class="{{ btnmenu }}">
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Menu">
+  <button
+    mat-mini-fab
+    class="bg-fnt-main"
+    [matMenuTriggerFor]="menu"
+    aria-label="Menu"
+  >
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
@@ -17,10 +22,20 @@
   <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
 <div class="{{ btnNav }}">
-  <button mat-icon-button aria-label="Back" (click)="redirect_back()">
+  <button
+    mat-mini-fab
+    class="bg-fnt-main"
+    aria-label="Back"
+    (click)="redirect_back()"
+  >
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <button mat-icon-button aria-label="Home" (click)="redirect_home()">
+  <button
+    mat-mini-fab
+    class="bg-fnt-main"
+    aria-label="Home"
+    (click)="redirect_home()"
+  >
     <mat-icon>home</mat-icon>
   </button>
 </div>
