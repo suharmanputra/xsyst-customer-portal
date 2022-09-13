@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { FontService } from './font.service';
+
 
 import { A11yModule } from '@angular/cdk/a11y';
 import { ClipboardModule } from '@angular/cdk/clipboard';
@@ -121,6 +121,6 @@ import { ProductdetailPageComponent } from './productdetail-page/productdetail-p
     ProductdetailPageComponent,
   ],
   bootstrap: [AppComponent],
-  providers: [XsystbackendService, MenuBarService, FontService],
+  providers: [XsystbackendService, MenuBarService],
 })
 export class AppModule {}

@@ -1,5 +1,4 @@
 import { Component, VERSION } from '@angular/core';
-import { FontService } from './font.service';
 
 @Component({
   selector: 'my-app',
@@ -12,5 +11,5 @@ export class AppComponent {
   idx = 0;
   pairs = [{ header: 'Oswald', body: 'EB Garamond' }];
 
-  constructor(private fontService: FontService) {}
+  constructor() {}
 }
