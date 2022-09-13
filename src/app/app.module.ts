@@ -110,6 +110,7 @@ import { ProductdetailPageComponent } from './productdetail-page/productdetail-p
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    MatTableExporterModule,
   ],
   declarations: [
     AppComponent,
@@ -119,7 +120,6 @@ import { ProductdetailPageComponent } from './productdetail-page/productdetail-p
     ContractPageComponent,
     ProductPageComponent,
     ProductdetailPageComponent,
-    MatTableExporterModule,
   ],
   bootstrap: [AppComponent],
   providers: [XsystbackendService, MenuBarService],
