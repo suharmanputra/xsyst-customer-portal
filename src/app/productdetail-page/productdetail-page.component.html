@@ -19,7 +19,7 @@
             &nbsp;&nbsp;
             <button
               mat-raised-button
-              color="primary"
+              color="warn"
               (click)="exporttable('tableCounterHistory')"
             >
               Export
@@ -198,7 +198,7 @@
             &nbsp;&nbsp;
             <button
               mat-raised-button
-              color="primary"
+              color="warn"
               (click)="exporttable('tableDeviceDelivery')"
             >
               Export
@@ -269,6 +269,45 @@
               </table>
             </div>
           </div>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            [pageSize]="5"
+          ></mat-paginator>
+        </mat-tab>
+        <mat-tab label="Service">
+          <div align="end">
+            <mat-form-field>
+              <mat-label>Filter</mat-label>
+              <input
+                matInput
+                placeholder="Type to filter.."
+                #input
+                (keyup)="applyFilterServiceHistory($event)"
+              />
+            </mat-form-field>
+            &nbsp;&nbsp;
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="exporttable('tableDeviceDelivery')"
+            >
+              Export
+            </button>
+          </div>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            [pageSize]="5"
+          ></mat-paginator>
+        </mat-tab>
+        <mat-tab label="Part Delivery">
+          <div align="end"></div>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 25, 100]"
+            [pageSize]="5"
+          ></mat-paginator
+        ></mat-tab>
+        <mat-tab label="Consumable Delivery">
+          <div align="end"></div>
           <mat-paginator
             [pageSizeOptions]="[5, 10, 25, 100]"
             [pageSize]="5"

@@ -11,6 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { TableUtil } from '../shared/table-util';
 import { CounterHistory } from '../interface/productdetailresp';
 import { DeviceDeliveryHistory } from '../interface/productdetailresp';
+import { ServiceHistory } from '../interface/ServiceHistory';
 
 @Component({
   selector: 'app-productdetail-page',
@@ -34,11 +35,14 @@ export class ProductdetailPageComponent implements OnInit {
 
   dsCounterHistory: MatTableDataSource<CounterHistory>;
   dsDeviceDelivery: MatTableDataSource<DeviceDeliveryHistory>;
+  dsServiceHistory: matTableDateSource<ServiceHistory>;
 
   @ViewChild(MatPaginator) paginatorcounter: MatPaginator;
   @ViewChild(MatPaginator) paginatordelivery: MatPaginator;
+  @ViewChild(MatPaginator) paginatorservice: MatPaginator;
   @ViewChild(MatSort) sortcounter: MatSort;
   @ViewChild(MatSort) sortdelivery: MatSort;
+  @ViewChild(MatSort) sortservice: MatSort;
 
   constructor(
     private actRouter: ActivatedRoute,
@@ -70,6 +74,13 @@ export class ProductdetailPageComponent implements OnInit {
         this.dsDeviceDelivery.paginator = this.paginatordelivery;
         this.dsDeviceDelivery.sort = this.sortcounter;
 
+        //Service History
+        this.dsServiceHistory = new MatTableDataSource(
+          jsonObj.data.service_history
+        );
+        this.dsServiceHistory.paginator = this.paginatorservice;
+        this.dsServiceHistory.sort = this.sortservice;
+
         this.menuBarService.setLoadingAnimation(false);
       });
   }
@@ -87,6 +98,14 @@ export class ProductdetailPageComponent implements OnInit {
     this.dsDeviceDelivery.filter = filterValue.trim().toLowerCase();
     if (this.dsDeviceDelivery.paginator) {
       this.dsDeviceDelivery.paginator.firstPage();
+    }
+  }
+
+  applyFilterServiceHistory(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dsServiceHistory.filter = filterValue.trim().toLowerCase();
+    if (this.dsServiceHistory.paginator) {
+      this.dsServiceHistory.paginator.firstPage();
     }
   }
 
