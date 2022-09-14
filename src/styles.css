@@ -17,7 +17,6 @@
 }
 
 .pagecontainer {
-  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -73,7 +72,8 @@
   z-index: 2;
   text-align: center;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #09327e;
+  color: white;
   height: 20px;
 }
 
@@ -99,7 +99,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  overflow-y: hidden;
+  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -457,6 +457,10 @@ button {
 }
 /*End button Dashboard Menu*/
 
+.sisi-kanan {
+  text-align: right !important;
+}
+
 .pad-10 {
   padding: 10px 10px 10px 10px;
 }
@@ -525,7 +529,7 @@ button {
 }
 
 .table-grid thead {
-  background-color: #7ea8f8;
+  background-color: #09327e;
 }
 
 .lebar-td-100 {

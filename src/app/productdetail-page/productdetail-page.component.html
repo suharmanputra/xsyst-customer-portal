@@ -6,15 +6,25 @@
       <mat-card-title>Device Detail</mat-card-title>
       <mat-tab-group>
         <mat-tab label="Counter">
-          <mat-form-field>
-            <mat-label>Filter</mat-label>
-            <input
-              matInput
-              placeholder="Cari Data.."
-              #input
-              (keyup)="applyFilterCounterHistory($event)"
-            />
-          </mat-form-field>
+          <div align="end">
+            <mat-form-field>
+              <mat-label>Filter</mat-label>
+              <input
+                matInput
+                placeholder="Cari Data.."
+                #input
+                (keyup)="applyFilterCounterHistory($event)"
+              />
+            </mat-form-field>
+            &nbsp;&nbsp;
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="exporttable('tableCounterHistory')"
+            >
+              Export
+            </button>
+          </div>
           <div class="tb-container mat-elevation-z8 win-form">
             <div class="tb-table-container">
               <table
@@ -173,25 +183,27 @@
             [pageSizeOptions]="[5, 10, 25, 100]"
             [pageSize]="5"
           ></mat-paginator>
-          <button
-            mat-raised-button
-            color="primary"
-            (click)="exporttable('tableCounterHistory')"
-          >
-            Export
-          </button>
-          <br />
         </mat-tab>
         <mat-tab label="Device Delivery">
-          <mat-form-field>
-            <mat-label>Filter</mat-label>
-            <input
-              matInput
-              placeholder="Cari Data.."
-              #input
-              (keyup)="applyFilterDeviceDelivery($event)"
-            />
-          </mat-form-field>
+          <div align="end">
+            <mat-form-field>
+              <mat-label>Filter</mat-label>
+              <input
+                matInput
+                placeholder="Cari Data.."
+                #input
+                (keyup)="applyFilterDeviceDelivery($event)"
+              />
+            </mat-form-field>
+            &nbsp;&nbsp;
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="exporttable('tableDeviceDelivery')"
+            >
+              Export
+            </button>
+          </div>
           <div class="tb-container mat-elevation-z8 win-form">
             <div class="tb-table-container">
               <table
@@ -209,7 +221,7 @@
                     Type
                   </th>
                   <td
-                    class="lebar-td-200"
+                    class="lebar-td-100"
                     mat-cell
                     *matCellDef="let row"
                     align="left"
@@ -223,7 +235,7 @@
                     Document Number
                   </th>
                   <td
-                    class="lebar-td-200"
+                    class="lebar-td-150"
                     mat-cell
                     *matCellDef="let row"
                     align="left"
@@ -237,7 +249,7 @@
                     Date
                   </th>
                   <td
-                    class="lebar-td-200"
+                    class="lebar-td-100"
                     mat-cell
                     *matCellDef="let row"
                     align="left"
@@ -266,14 +278,6 @@
             [pageSizeOptions]="[5, 10, 25, 100]"
             [pageSize]="5"
           ></mat-paginator>
-          <button
-            mat-raised-button
-            color="primary"
-            (click)="exporttable('tableDeviceDelivery')"
-          >
-            Export
-          </button>
-          <br />
         </mat-tab>
       </mat-tab-group>
     </mat-card>
