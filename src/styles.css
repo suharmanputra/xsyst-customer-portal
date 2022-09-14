@@ -17,7 +17,6 @@
 }
 
 .pagecontainer {
-  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -73,7 +72,8 @@
   z-index: 2;
   text-align: center;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #09327e;
+  color: white;
   height: 20px;
 }
 
@@ -99,7 +99,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  overflow-y: hidden;
+  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -457,6 +457,10 @@ button {
 }
 /*End button Dashboard Menu*/
 
+.sisi-kanan {
+  text-align: right !important;
+}
+
 .pad-10 {
   padding: 10px 10px 10px 10px;
 }
@@ -525,17 +529,20 @@ button {
 }
 
 .table-grid thead {
-  background-color: #7ea8f8;
+  background-color: #09327e;
 }
 
 .lebar-td-100 {
-  width: 100px;
+  width: 100px !important;
 }
 .lebar-td-150 {
-  width: 150px;
+  width: 150px !important;
+}
+.lebar-td-180 {
+  width: 180px !important;
 }
 .lebar-td-200 {
-  width: 200px;
+  width: 200px !important;
 }
 
 .btn-table {
@@ -549,3 +556,87 @@ button {
   text-decoration: none;
 }
 /*End Table */
+
+/*tab*/
+/* Styles for tab labels */
+.mat-tab-label {
+  max-width: 225px !important;
+  padding: 2px;
+  background-color: #51ceff;
+  color: black;
+  font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  max-width: 225px !important;
+  padding: 2px;
+  background-color: #e2f7ff;
+  color: rgb(5, 5, 199);
+  font-weight: 700;
+  border-top-left-radius: 15%;
+  border-top-right-radius: 15%;
+}
+
+.mat-tab-body-content {
+  height: 100%;
+  overflow: auto;
+  padding: 10px 10px 10px 10px;
+  background-color: #e2f7ff;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: rgb(13, 0, 128);
+}
+
+/*end tab*/
+
+/* paginator */
+.mat-paginator-outer-container {
+  display: flex;
+  background-color: #0c038a;
+}
+
+.mat-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+}
+
+.mat-paginator-container {
+  min-height: 56px;
+}
+
+.mat-paginator-icon {
+  display: inline-block !important;
+  width: 28px !important;
+  color: #0c038a;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 100%;
+  background-color: white;
+}
+
+.mat-paginator-range-label {
+  margin: 0 32px 0 24px;
+  color: white;
+}
+
+.mat-paginator-page-size {
+  display: flex;
+  align-items: baseline;
+  margin-right: 8px;
+  color: white;
+}
+.mat-select-arrow-wrapper {
+  color: white;
+  background-color: white;
+}
+.mat-select-value {
+  color: white;
+}
+/* end paginator*/
