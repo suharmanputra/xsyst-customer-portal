@@ -30,7 +30,7 @@ export class ProductdetailPageComponent implements OnInit {
     'color_large_print',
   ];
 
-  discolDeviceDelivery: string[] = ['delivery_type', 'doc_no', 'doc_date'];
+  discolDeviceDelivery: string[] = ['delivery_type', 'doc_date', 'doc_no'];
 
   dsCounterHistory: MatTableDataSource<CounterHistory>;
   dsDeviceDelivery: MatTableDataSource<DeviceDeliveryHistory>;

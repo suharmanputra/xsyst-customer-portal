@@ -11,7 +11,7 @@
               <mat-label>Filter</mat-label>
               <input
                 matInput
-                placeholder="Cari Data.."
+                placeholder="Type to filter.."
                 #input
                 (keyup)="applyFilterCounterHistory($event)"
               />
@@ -190,7 +190,7 @@
               <mat-label>Filter</mat-label>
               <input
                 matInput
-                placeholder="Cari Data.."
+                placeholder="Type to filter.."
                 #input
                 (keyup)="applyFilterDeviceDelivery($event)"
               />
@@ -221,26 +221,12 @@
                     Type
                   </th>
                   <td
-                    class="lebar-td-100"
+                    class="lebar-td-180"
                     mat-cell
                     *matCellDef="let row"
                     align="left"
                   >
                     {{ row.delivery_type }}
-                  </td>
-                </ng-container>
-
-                <ng-container matColumnDef="doc_no">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Document Number
-                  </th>
-                  <td
-                    class="lebar-td-150"
-                    mat-cell
-                    *matCellDef="let row"
-                    align="left"
-                  >
-                    {{ row.doc_no }}
                   </td>
                 </ng-container>
 
@@ -255,6 +241,15 @@
                     align="left"
                   >
                     {{ this.xsystbackend.formatDate(row.doc_date) }}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="doc_no">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                    Document Number
+                  </th>
+                  <td mat-cell *matCellDef="let row" align="left">
+                    {{ row.doc_no }}
                   </td>
                 </ng-container>
 

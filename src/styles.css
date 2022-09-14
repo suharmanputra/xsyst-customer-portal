@@ -533,13 +533,16 @@ button {
 }
 
 .lebar-td-100 {
-  width: 100px;
+  width: 100px !important;
 }
 .lebar-td-150 {
-  width: 150px;
+  width: 150px !important;
+}
+.lebar-td-180 {
+  width: 180px !important;
 }
 .lebar-td-200 {
-  width: 200px;
+  width: 200px !important;
 }
 
 .btn-table {
@@ -553,3 +556,38 @@ button {
   text-decoration: none;
 }
 /*End Table */
+
+/*tab*/
+/* Styles for tab labels */
+.mat-tab-label {
+  max-width: 225px !important;
+  padding: 2px;
+  background-color: #51ceff;
+  color: black;
+  font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  max-width: 225px !important;
+  padding: 2px;
+  background-color: #e2f7ff;
+  color: rgb(5, 5, 199);
+  font-weight: 700;
+  border-top-left-radius: 15%;
+  border-top-right-radius: 15%;
+}
+
+.mat-tab-body-content {
+  height: 100%;
+  overflow: auto;
+  padding: 10px 10px 10px 10px;
+  background-color: #e2f7ff;
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: rgb(13, 0, 128);
+}
+
+/*end tab*/

@@ -4,15 +4,17 @@
     <mat-divider></mat-divider>
     <mat-card class="bayangan">
       <mat-card-title>Device List</mat-card-title>
-      <mat-form-field>
-        <mat-label>Filter</mat-label>
-        <input
-          matInput
-          (keyup)="applyFilter($event)"
-          placeholder="Cari Data.."
-          #input
-        />
-      </mat-form-field>
+      <div align="end">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Type to filter.."
+            #input
+          />
+        </mat-form-field>
+      </div>
 
       <div class="tb-container mat-elevation-z8 win-form">
         <div class="tb-table-container">
