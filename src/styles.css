@@ -591,3 +591,52 @@ button {
 }
 
 /*end tab*/
+
+/* paginator */
+.mat-paginator-outer-container {
+  display: flex;
+  background-color: #0c038a;
+}
+
+.mat-paginator-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 8px;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+}
+
+.mat-paginator-container {
+  min-height: 56px;
+}
+
+.mat-paginator-icon {
+  display: inline-block !important;
+  width: 28px !important;
+  color: #0c038a;
+  cursor: pointer;
+  border: 2px solid white;
+  border-radius: 100%;
+  background-color: white;
+}
+
+.mat-paginator-range-label {
+  margin: 0 32px 0 24px;
+  color: white;
+}
+
+.mat-paginator-page-size {
+  display: flex;
+  align-items: baseline;
+  margin-right: 8px;
+  color: white;
+}
+.mat-select-arrow-wrapper {
+  color: white;
+  background-color: white;
+}
+.mat-select-value {
+  color: white;
+}
+/* end paginator*/
