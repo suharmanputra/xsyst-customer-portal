@@ -34,7 +34,7 @@ export class ProductdetailPageComponent implements OnInit {
 
   discolDeviceDelivery: string[] = ['doc_date', 'delivery_type', 'doc_no'];
   discolServiceHistory: string[] = ['req_date', 'svo_type', 'svo_no'];
-  discolAdditionalItemHistory: string[] = ['doc_date', 'doc_no'];
+  discolAdditionalItemHistory: string[] = ['svo_no', 'req_date', 'desc'];
 
   dsCounterHistory: MatTableDataSource<CounterHistory>;
   dsDeviceDelivery: MatTableDataSource<DeviceDeliveryHistory>;
