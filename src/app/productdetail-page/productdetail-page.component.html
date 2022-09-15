@@ -364,7 +364,7 @@
             [pageSize]="5"
           ></mat-paginator>
         </mat-tab>
-        <mat-tab label="Part Delivery">
+        <mat-tab label="Additional Item">
           <div align="end">
             <mat-form-field>
               <mat-label>Filter</mat-label>
@@ -389,7 +389,7 @@
             <div class="tb-table-container">
               <table
                 mat-table
-                [dataSource]="dsPartHistory"
+                [dataSource]="dsAddtionalItemHistory"
                 class="table-grid"
                 matSort
                 matSortActive="doc_date"
@@ -420,10 +420,13 @@
                   </td>
                 </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="discolPartHistory"></tr>
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="discolAdditionalItemHistory"
+                ></tr>
                 <tr
                   mat-row
-                  *matRowDef="let row; columns: discolPartHistory"
+                  *matRowDef="let row; columns: discolAdditionalItemHistory"
                 ></tr>
 
                 <!-- Row shown when there is no matching data.  -->
@@ -442,87 +445,6 @@
             [pageSize]="5"
           ></mat-paginator
         ></mat-tab>
-        <mat-tab label="Consumable Delivery">
-          <div align="end">
-            <mat-form-field>
-              <mat-label>Filter</mat-label>
-              <input
-                matInput
-                placeholder="Type to filter.."
-                #input
-                (keyup)="applyFilterConsumableHistory($event)"
-              />
-            </mat-form-field>
-            &nbsp;&nbsp;
-            <button
-              mat-raised-button
-              color="warn"
-              (click)="exporttable('tableConsumableHistory')"
-            >
-              Export
-            </button>
-          </div>
-
-          <div class="tb-container mat-elevation-z8 win-form">
-            <div class="tb-table-container">
-              <table
-                mat-table
-                [dataSource]="dsConsumableHistory"
-                class="table-grid"
-                matSort
-                matSortActive="req_date"
-                matSortDisableClear
-                matSortDirection="desc"
-                id="tablePartHistory"
-              >
-                <ng-container matColumnDef="req_date">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Date
-                  </th>
-                  <td
-                    class="lebar-td-150"
-                    mat-cell
-                    *matCellDef="let row"
-                    align="left"
-                  >
-                    {{ this.xsystbackend.formatDate(row.req_date) }}
-                  </td>
-                </ng-container>
-
-                <ng-container matColumnDef="svo_no">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                    Document Number
-                  </th>
-                  <td mat-cell *matCellDef="let row" align="left">
-                    {{ row.svo_no }}
-                  </td>
-                </ng-container>
-
-                <tr
-                  mat-header-row
-                  *matHeaderRowDef="discolConsumableHistory"
-                ></tr>
-                <tr
-                  mat-row
-                  *matRowDef="let row; columns: discolConsumableHistory"
-                ></tr>
-
-                <!-- Row shown when there is no matching data.  -->
-                <tr class="mat-row" *matNoDataRow>
-                  <td class="mat-cell" colspan="4">
-                    <!-- No data matching the filter "{{ input.value }}" -->
-                    Data Not Found.
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-
-          <mat-paginator
-            [pageSizeOptions]="[5, 10, 25, 100]"
-            [pageSize]="5"
-          ></mat-paginator>
-        </mat-tab>
       </mat-tab-group>
     </mat-card>
   </div>

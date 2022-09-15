@@ -12,8 +12,7 @@ import { TableUtil } from '../shared/table-util';
 import { CounterHistory } from '../interface/productdetailresp';
 import { DeviceDeliveryHistory } from '../interface/productdetailresp';
 import { ServiceHistory } from '../interface/productdetailresp';
-import { PartsReplacementHistory } from '../interface/productdetailresp';
-import { ConsumableRequestHistory } from '../interface/productdetailresp';
+import { AdditionalItemHistory } from '../interface/productdetailresp';
 
 @Component({
   selector: 'app-productdetail-page',
@@ -35,25 +34,22 @@ export class ProductdetailPageComponent implements OnInit {
 
   discolDeviceDelivery: string[] = ['doc_date', 'delivery_type', 'doc_no'];
   discolServiceHistory: string[] = ['req_date', 'svo_type', 'svo_no'];
-  discolPartHistory: string[] = ['doc_date', 'doc_no'];
-  discolConsumableHistory: string[] = ['req_date', 'svo_no'];
+  discolAdditionalItemHistory: string[] = ['doc_date', 'doc_no'];
 
   dsCounterHistory: MatTableDataSource<CounterHistory>;
   dsDeviceDelivery: MatTableDataSource<DeviceDeliveryHistory>;
   dsServiceHistory: MatTableDataSource<ServiceHistory>;
-  dsPartHistory: MatTableDataSource<PartsReplacementHistory>;
-  dsConsumableHistory: MatTableDataSource<ConsumableRequestHistory>;
+  dsAddtionalItemHistory: MatTableDataSource<AdditionalItemHistory>;
 
   @ViewChild(MatPaginator) paginatorcounter: MatPaginator;
   @ViewChild(MatPaginator) paginatordelivery: MatPaginator;
   @ViewChild(MatPaginator) paginatorservice: MatPaginator;
-  @ViewChild(MatPaginator) paginatorpart: MatPaginator;
-  @ViewChild(MatPaginator) paginatorconsumable: MatPaginator;
+  @ViewChild(MatPaginator) paginatoradditionalitem: MatPaginator;
+
   @ViewChild(MatSort) sortcounter: MatSort;
   @ViewChild(MatSort) sortdelivery: MatSort;
   @ViewChild(MatSort) sortservice: MatSort;
-  @ViewChild(MatSort) sortpart: MatSort;
-  @ViewChild(MatSort) sortconsumable: MatSort;
+  @ViewChild(MatSort) sortadditionalitem: MatSort;
 
   constructor(
     private actRouter: ActivatedRoute,
@@ -65,13 +61,11 @@ export class ProductdetailPageComponent implements OnInit {
 
   ngOnInit() {
     this.menuBarService.setMenuVisible(true);
-
-    this.menuBarService.setMenuVisible(true);
     this.menuBarService.setLoadingAnimation(true);
     this.xsystbackend
       .getproductdetail(this.actRouter.snapshot.params['idproduct'])
       .subscribe((jsonObj) => {
-        //counter hostory
+        //counter history
         this.dsCounterHistory = new MatTableDataSource(
           jsonObj.data.counter_history
         );
@@ -92,19 +86,12 @@ export class ProductdetailPageComponent implements OnInit {
         this.dsServiceHistory.paginator = this.paginatorservice;
         this.dsServiceHistory.sort = this.sortservice;
 
-        //Part History
-        this.dsPartHistory = new MatTableDataSource(
-          jsonObj.data.parts_replacement_history
+        //additional item
+        this.dsAddtionalItemHistory = new MatTableDataSource(
+          jsonObj.data.additional_item_history
         );
-        this.dsPartHistory.paginator = this.paginatorpart;
-        this.dsPartHistory.sort = this.sortservice;
-
-        //Consumable History
-        this.dsConsumableHistory = new MatTableDataSource(
-          jsonObj.data.consumable_request_history
-        );
-        this.dsConsumableHistory.paginator = this.paginatorconsumable;
-        this.dsConsumableHistory.sort = this.sortconsumable;
+        this.dsAddtionalItemHistory.paginator = this.paginatoradditionalitem;
+        this.dsAddtionalItemHistory.sort = this.sortadditionalitem;
 
         this.menuBarService.setLoadingAnimation(false);
       });
@@ -136,17 +123,9 @@ export class ProductdetailPageComponent implements OnInit {
 
   applyFilterPartHistory(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dsPartHistory.filter = filterValue.trim().toLowerCase();
-    if (this.dsPartHistory.paginator) {
-      this.dsPartHistory.paginator.firstPage();
-    }
-  }
-
-  applyFilterConsumableHistory(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dsConsumableHistory.filter = filterValue.trim().toLowerCase();
-    if (this.dsConsumableHistory.paginator) {
-      this.dsConsumableHistory.paginator.firstPage();
+    this.dsAddtionalItemHistory.filter = filterValue.trim().toLowerCase();
+    if (this.dsAddtionalItemHistory.paginator) {
+      this.dsAddtionalItemHistory.paginator.firstPage();
     }
   }
 
