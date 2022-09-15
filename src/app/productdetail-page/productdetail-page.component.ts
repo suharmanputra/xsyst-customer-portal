@@ -33,8 +33,8 @@ export class ProductdetailPageComponent implements OnInit {
     'color_large_print',
   ];
 
-  discolDeviceDelivery: string[] = ['delivery_type', 'doc_date', 'doc_no'];
-  discolServiceHistory: string[] = ['svo_type', 'req_date', 'svo_no'];
+  discolDeviceDelivery: string[] = ['doc_date', 'delivery_type', 'doc_no'];
+  discolServiceHistory: string[] = ['req_date', 'svo_type', 'svo_no'];
   discolPartHistory: string[] = ['doc_date', 'doc_no'];
   discolConsumableHistory: string[] = ['req_date', 'svo_no'];
 
