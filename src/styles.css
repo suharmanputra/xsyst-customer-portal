@@ -492,6 +492,7 @@ button {
 /* Table */
 .tb-container {
   position: relative;
+  overflow: scroll;
 }
 
 .tb-table-container {
