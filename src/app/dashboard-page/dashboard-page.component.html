@@ -118,6 +118,12 @@
           </mat-form-field>
           <button
             mat-raised-button
+            (click)="openDialogWithRef(changepassworddialog)"
+          >
+            Change Password
+          </button>
+          <button
+            mat-raised-button
             (click)="
               updateProfil(txtfullname.value, txtemail.value, txtphone.value)
             "
@@ -126,6 +132,72 @@
           </button>
           <br />
         </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #changepassworddialog>
+    <div>
+      <div style="text-align:center;">
+        <h4 matDialogTitle>Change Password</h4>
+      </div>
+      <div class="screen-1" matDialogContent>
+        <br /><br /><br />
+        <div class="email">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Old Password</mat-label>
+            <input
+              matInput
+              #oldpassword
+              [type]="hide ? 'password' : 'text'"
+              [attr.disabled]="true"
+              id="oldpassword"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <br /><br /><br />
+        <div class="email">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>New Password</mat-label>
+            <input
+              matInput
+              #newpassword
+              [type]="hide ? 'password' : 'text'"
+              id="newpassword"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="hide = !hide"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide"
+            >
+              <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+        <br />
+        <button
+          class="changepass"
+          mat-button
+          mat-raised-button
+          matDialogClose
+          color="accent"
+          style="display:inline-block"
+          (click)="changepassword(oldpassword.value, newpassword.value)"
+        >
+          Change Password
+        </button>
+        <br /><br />
       </div>
     </div>
   </ng-template>

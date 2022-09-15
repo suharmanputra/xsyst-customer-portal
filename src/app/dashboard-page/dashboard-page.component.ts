@@ -12,6 +12,8 @@ import { ViewChild, TemplateRef } from '@angular/core';
 })
 export class DashboardPageComponent implements OnInit {
   @ViewChild('settingdialog') settingdialog: TemplateRef<any>;
+  @ViewChild('changepassworddialog') changepassworddialog: TemplateRef<any>;
+  hide = true;
   username: string;
   fullname: string;
   email: string;
@@ -72,5 +74,34 @@ export class DashboardPageComponent implements OnInit {
 
   closeDialog() {
     this.dialog.closeAll();
+  }
+
+  changepassword(oldpassword: string, newpassword: string) {
+    if (oldpassword === '') {
+      this.snackBar.open('Old password cant be empty', 'Ok', {
+        duration: 3000,
+      });
+    } else {
+      if (newpassword === '') {
+        this.snackBar.open('New password cant be empty', 'Ok', {
+          duration: 3000,
+        });
+      } else {
+        this.menuBarService.setLoadingAnimation(true);
+        let id_cust_login = Number(localStorage.getItem('userid'));
+        this.xsystbackend
+          .changepassword(id_cust_login, oldpassword, newpassword)
+          .subscribe((jsonObj) => {
+            if (jsonObj.status === '00') {
+              this.closeDialog();
+            } else {
+              this.snackBar.open(jsonObj.message, 'Ok', {
+                duration: 3000,
+              });
+            }
+          });
+      }
+    }
+    this.menuBarService.setLoadingAnimation(false);
   }
 }
