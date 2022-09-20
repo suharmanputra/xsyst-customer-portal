@@ -402,7 +402,7 @@
                     Document Number
                   </th>
                   <td
-                    class="lebar-td-100"
+                    class="lebar-td-200"
                     mat-cell
                     *matCellDef="let row"
                     align="left"
@@ -415,7 +415,12 @@
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
                     Request Date
                   </th>
-                  <td mat-cell *matCellDef="let row" align="center">
+                  <td
+                    class="lebar-td-100"
+                    mat-cell
+                    *matCellDef="let row"
+                    align="left"
+                  >
                     {{ this.xsystbackend.formatDate(row.req_date) }}
                   </td>
                 </ng-container>
@@ -424,7 +429,7 @@
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>
                     Description
                   </th>
-                  <td mat-cell *matCellDef="let row" align="center">
+                  <td mat-cell *matCellDef="let row" align="left">
                     {{ row.desc }}
                   </td>
                 </ng-container>
