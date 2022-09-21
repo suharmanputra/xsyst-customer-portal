@@ -8,6 +8,7 @@ export interface ListContract {
   contract_estimated_end_date: Date;
   kode_sales: string;
   nama_sales: string;
+  status: string;
 }
 
 export interface Data {

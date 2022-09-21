@@ -22,6 +22,7 @@ export class ContractPageComponent implements OnInit {
     'contract_start_date',
     'contract_estimated_end_date',
     'nama_sales',
+    'status',
     'detail',
   ];
 
