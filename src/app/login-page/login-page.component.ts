@@ -12,6 +12,7 @@ import { ViewChild, TemplateRef } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
   @ViewChild('changepassworddialog') changepassworddialog: TemplateRef<any>;
+  @ViewChild('privacypolicydialog') privacypolicydialog: TemplateRef<any>;
   hide = true;
   privacypolicystring: string;
   constructor(
