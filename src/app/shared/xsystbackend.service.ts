@@ -7,6 +7,7 @@ import { tokencheckresp } from '../interface/tokencheckresp';
 import { contractlistresp } from '../interface/contractlistresp';
 import { productlistresp } from '../interface/productlistresp';
 import { Productdetailresp } from '../interface/productdetailresp';
+import { privacypolicyresp } from '../interface/privacypolicy';
 
 @Injectable()
 export class XsystbackendService {
@@ -140,6 +141,19 @@ export class XsystbackendService {
     );
 
     return this.http.post<Productdetailresp>(url, body, {
+      headers,
+    });
+  }
+
+  getprivacypolicy() {
+    const url = this.mainURL + 'api/customer/login/privacypolicy';
+    let headers = new HttpHeaders();
+    headers = headers.set(
+      'Authorization',
+      'Bearer ' + localStorage.getItem('token')
+    );
+
+    return this.http.get<privacypolicyresp>(url, {
       headers,
     });
   }

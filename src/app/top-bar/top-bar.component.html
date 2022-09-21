@@ -8,9 +8,19 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="redirect_home()">
+    <button
+      mat-menu-item
+      (click)="this.menuBarService.navigatepage('/dashboard')"
+    >
       <mat-icon>home</mat-icon>
       <span>Home</span>
+    </button>
+    <button
+      mat-menu-item
+      (click)="this.menuBarService.navigatepage('privacypolicy')"
+    >
+      <mat-icon>information</mat-icon>
+      <span>Privacy Policy</span>
     </button>
     <button mat-menu-item (click)="this.menuBarService.logout()">
       <mat-icon>exit_to_app</mat-icon>
@@ -35,7 +45,7 @@
     mat-mini-fab
     class="bg-fnt-main"
     aria-label="Home"
-    (click)="redirect_home()"
+    (click)="this.menuBarService.navigatepage('/dashboard')"
   >
     <mat-icon>home</mat-icon>
   </button>

@@ -34,11 +34,7 @@ export class TopBarComponent implements OnInit {
     });
   }
 
-  redirect_home() {
-    this.menuBarService.navigatepage('/dashboard');
-  }
-
-  redirect_back() {
+    redirect_back() {
     let backurl: string = window.location.href.split('#')[1],
       lasturl: string = backurl.split('/')[backurl.split('/').length - 1],
       backurlroute: string = '';
