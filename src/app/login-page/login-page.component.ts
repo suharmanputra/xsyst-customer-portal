@@ -13,6 +13,7 @@ import { ViewChild, TemplateRef } from '@angular/core';
 export class LoginPageComponent implements OnInit {
   @ViewChild('changepassworddialog') changepassworddialog: TemplateRef<any>;
   hide = true;
+  privacypolicystring: string;
   constructor(
     private snackBar: MatSnackBar,
     private menuBarService: MenuBarService,
@@ -43,6 +44,12 @@ export class LoginPageComponent implements OnInit {
       localStorage.setItem('username', '');
       localStorage.setItem('token', '');
     }
+
+    this.xsystbackend.getprivacypolicy().subscribe((jsonObj) => {
+      this.privacypolicystring =
+        jsonObj.data.privacy_policy_list[0].privacy_policy_string;
+    });
+    this.menuBarService.setLoadingAnimation(false);
   }
 
   checkLogin(username: string, password: string) {
