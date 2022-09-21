@@ -57,6 +57,7 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 import { ContractPageComponent } from './contract-page/contract-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductdetailPageComponent } from './productdetail-page/productdetail-page.component';
+import { PrivacypolicyPageComponent } from './privacypolicy-page/privacypolicy-page.component';
 
 @NgModule({
   imports: [
@@ -118,6 +119,7 @@ import { ProductdetailPageComponent } from './productdetail-page/productdetail-p
     ContractPageComponent,
     ProductPageComponent,
     ProductdetailPageComponent,
+    PrivacypolicyPageComponent,
   ],
   bootstrap: [AppComponent],
   providers: [XsystbackendService, MenuBarService],

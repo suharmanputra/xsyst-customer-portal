@@ -5,6 +5,7 @@ import { DashboardPageComponent } from './dashboard-page/dashboard-page.componen
 import { ContractPageComponent } from './contract-page/contract-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { ProductdetailPageComponent } from './productdetail-page/productdetail-page.component';
+import { PrivacypolicyPageComponent } from './privacypolicy-page/privacypolicy-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'dashboard/contract/product/:ididcontract/detail/:idproduct',
     component: ProductdetailPageComponent,
+  },
+  {
+    path: 'privacypolicy',
+    component: PrivacypolicyPageComponent,
   },
 ];
 
